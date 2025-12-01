@@ -1,6 +1,6 @@
 # dc26-base - Thème WordPress
 
-Un thème WordPress moderne et personnalisable développé pour Swiss Alp Health, utilisant les dernières technologies web et les standards WordPress.
+Un thème WordPress moderne et personnalisable développé pour le plaisir, utilisant les dernières technologies web et les standards WordPress.
 
 ## 🚀 Caractéristiques
 
