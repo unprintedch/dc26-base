@@ -1,0 +1,114 @@
+.dc26-filters .facetwp-facet-search .facetwp-input-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.dc26-filters .facetwp-facet-search .facetwp-input-wrap i {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.dc26-filters .facetwp-facet-search .facetwp-input-wrap input {
+    position: relative;
+    order: 1;
+    padding: 0.75rem;
+    border-radius: 0.125rem;
+}
+
+.dc26-filters .facetwp-type-dropdown,
+.dc26-filters .facetwp-facet-tri {
+    padding: 12px;
+    border-radius: 0.125rem;
+    padding-right: 0.75rem;
+    background-color: white;
+    position: relative;
+}
+
+.dc26-filters .facetwp-type-dropdown::after,
+.dc26-filters .facetwp-facet-tri::after {
+    content: "\f078";
+    /* FontAwesome Unicode for chevron down */
+    font: var(--fa-font-solid);
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    z-index: 10;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.icon::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Hide the default dropdown arrow */
+.facetwp-facet select {
+    position: relative;
+    appearance: none;
+}
+
+.dc26-filters .facetwp-facet {
+    margin-bottom: 0.5rem;
+}
+
+.dc26-filters__partner .facetwp-facet-search {
+    width: 15rem;
+}
+
+.facetwp-radio .facetwp-counter {
+    display: none;
+}
+
+.facetwp-facet-partner_type .facetwp-radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background-position: left top 5px;
+    padding-left: 1.5rem;
+    padding-bottom: 0.75rem;
+}
+
+.facetwp-load-more {
+    border-radius: 9999px;
+    background-color: var(--wp--preset--color--primary);
+    color: white;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.dc-cluster-class {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--wp--preset--color--primary);
+    border: 2px solid white;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    font-family: var(--wp--preset--font-family--display, system-ui, sans-serif);
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.facetwp-map-filtering {
+    display: none;
+}

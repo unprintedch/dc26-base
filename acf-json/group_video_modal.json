@@ -1,0 +1,108 @@
+{
+    "key": "group_video_modal",
+    "title": "BLOCK video",
+    "fields": [
+        {
+            "key": "field_video_url",
+            "label": "URL de la vidéo",
+            "name": "video_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Collez l'URL YouTube, Vimeo ou autre service vidéo",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "https:\/\/www.youtube.com\/watch?v=...",
+            "default_value": ""
+        },
+        {
+            "key": "field_video_title",
+            "label": "Titre de la vidéo",
+            "name": "video_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Titre de la vidéo",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_button_text",
+            "label": "Texte du bouton",
+            "name": "button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Regarder la vidéo",
+            "placeholder": "Regarder la vidéo",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_thumbnail_image",
+            "label": "Image de prévisualisation",
+            "name": "thumbnail_url",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Image qui sera affichée comme bouton de déclenchement",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Champs pour le bloc Video Modal",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1761123256
+}

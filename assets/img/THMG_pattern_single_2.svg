@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-dd6c6d6f-bb0d-4cf0-bb88-0e9c01fdaa64" data-name="uuid-66277e5b-8890-4b46-853e-4979bddd00f2" xmlns="http://www.w3.org/2000/svg" width="767.24" height="767.24" viewBox="0 0 767.24 767.24">
+  <defs>
+    <style>
+      .uuid-5bcaf255-6983-4a6f-bd72-3014649d4022 {
+        stroke-width: .92px;
+      }
+
+      .uuid-5bcaf255-6983-4a6f-bd72-3014649d4022, .uuid-c5d75b82-373e-45b5-817d-a779005286f5 {
+        fill: none;
+        stroke: #535267;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="uuid-c5d75b82-373e-45b5-817d-a779005286f5" points="383.62 39.69 433.89 262.25 626.81 140.43 504.99 333.35 727.55 383.62 504.99 433.89 626.81 626.81 433.89 504.99 383.62 727.55 333.35 504.99 140.43 626.81 262.25 433.89 39.69 383.62 262.25 333.35 140.43 140.43 333.35 262.25 383.62 39.69"/>
+    <circle class="uuid-c5d75b82-373e-45b5-817d-a779005286f5" cx="383.62" cy="383.62" r="131.32" transform="translate(-49.36 710.51) rotate(-82.05)"/>
+    <circle class="uuid-c5d75b82-373e-45b5-817d-a779005286f5" cx="383.62" cy="383.62" r="210.75" transform="translate(-158.9 383.62) rotate(-45)"/>
+    <circle class="uuid-c5d75b82-373e-45b5-817d-a779005286f5" cx="383.62" cy="383.62" r="80.45" transform="translate(-148.13 491.21) rotate(-56.44)"/>
+    <circle class="uuid-c5d75b82-373e-45b5-817d-a779005286f5" cx="383.62" cy="383.62" r="49.35" transform="translate(-84.78 657.35) rotate(-75.3)"/>
+    <circle class="uuid-c5d75b82-373e-45b5-817d-a779005286f5" cx="383.62" cy="383.62" r="30.75" transform="translate(-17.22 18.03) rotate(-2.63)"/>
+  </g>
+  <rect class="uuid-5bcaf255-6983-4a6f-bd72-3014649d4022" x="41.99" y="42" width="196.28" height="196.28" transform="translate(140.14 -58.05) rotate(45)"/>
+  <rect class="uuid-5bcaf255-6983-4a6f-bd72-3014649d4022" x="528.67" y="528.67" width="196.28" height="196.28" transform="translate(626.82 -259.63) rotate(45)"/>
+  <rect class="uuid-5bcaf255-6983-4a6f-bd72-3014649d4022" x="41.99" y="528.67" width="196.28" height="196.28" transform="translate(-402.18 282.68) rotate(-45)"/>
+  <rect class="uuid-5bcaf255-6983-4a6f-bd72-3014649d4022" x="528.67" y="42" width="196.28" height="196.28" transform="translate(84.49 484.26) rotate(-45)"/>
+</svg>
