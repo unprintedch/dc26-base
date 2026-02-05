@@ -141,3 +141,51 @@ function dc26_enqueue_block_editor_assets(): void {
 }
 add_action('enqueue_block_assets', 'dc26_enqueue_block_editor_assets');
 
+/**
+ * Enqueue un script éditeur pour limiter les styles aux template parts header
+ */
+function dc26_enqueue_editor_template_part_styles(): void {
+  $script_path = 'scripts/editor-template-part-styles.js';
+  
+  wp_enqueue_script(
+    'dc26-editor-template-part-styles',
+    get_template_directory_uri() . '/' . $script_path,
+    array('wp-blocks', 'wp-data', 'wp-dom-ready'),
+    dc26_get_asset_version($script_path),
+    true
+  );
+}
+add_action('enqueue_block_editor_assets', 'dc26_enqueue_editor_template_part_styles');
+
+/**
+ * Enqueue block variation for accordion tabs (editor only).
+ */
+function dc26_enqueue_accordion_tabs_variation(): void {
+  $script_path = 'scripts/accordion-tabs-variation.js';
+
+  wp_enqueue_script(
+    'dc26-accordion-tabs-variation',
+    get_template_directory_uri() . '/' . $script_path,
+    array('wp-blocks', 'wp-dom-ready', 'wp-i18n'),
+    dc26_get_asset_version($script_path),
+    true
+  );
+}
+add_action('enqueue_block_editor_assets', 'dc26_enqueue_accordion_tabs_variation');
+
+/**
+ * Enqueue accordion tabs behavior script (front).
+ */
+function dc26_enqueue_accordion_tabs_front(): void {
+  $script_path = 'scripts/accordion-tabs-radio.js';
+
+  wp_enqueue_script(
+    'dc26-accordion-tabs-radio',
+    get_template_directory_uri() . '/' . $script_path,
+    array(),
+    dc26_get_asset_version($script_path),
+    true
+  );
+}
+add_action('wp_enqueue_scripts', 'dc26_enqueue_accordion_tabs_front', 20);
+

@@ -1,9 +1,11 @@
 <?php
 
 require_once get_template_directory() . '/functions/dc26-enqueue.php';
+require_once get_template_directory() . '/functions/dc26-login-screen.php';
 require_once get_template_directory() . '/functions/dc26-block-register.php';
 require_once get_template_directory() . '/functions/dc26-menu-walker.php';
 require_once get_template_directory() . '/functions/dc26-woocommerce.php';
+require_once get_template_directory() . '/functions/dc26-facet.php';
 
 /**
  * dc26-base functions and definitions.
@@ -32,6 +34,19 @@ require_once get_template_directory() . '/functions/dc26-woocommerce.php';
  */
 add_theme_support('align-wide');
 
+// Editor-only styles to improve block editor visibility.
+add_theme_support('editor-styles');
+add_editor_style('css/editor-style.css');
 
- 
+/**
+ * Remove "Privé :" prefix from private page titles.
+ *
+ * @param string $format Default title format.
+ * @return string
+ */
+function dc26_private_title_format(string $format): string {
+    return '%s';
+}
+add_filter('private_title_format', 'dc26_private_title_format');
+
  

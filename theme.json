@@ -23,43 +23,20 @@
 			"core/paragraph": {
 				"typography": {
 					"fontFamily": true
-				},
-				"layout": {
-					"allowEditing": true
 				}
 			},
 			"core/heading": {
 				"typography": {
 					"fontFamily": true
-				},
-				"layout": {
-					"allowEditing": true
 				}
 			},
-			"core/group": {
-				"layout": {
-					"allowEditing": true
-				}
-			},
-			"core/columns": {
-				"layout": {
-					"allowEditing": true
-				}
-			},
-			"core/image": {
-				"layout": {
-					"allowEditing": true
-				}
-			},
-			"core/cover": {
-				"layout": {
-					"allowEditing": true
-				}
-			},
-			"core/media-text": {
-				"layout": {
-					"allowEditing": true
-				}
+			"core/post-terms": {
+				"styles": [
+					{
+						"name": "chips",
+						"label": "Capsules"
+					}
+				]
 			}
 		},
 		"color": {
@@ -69,39 +46,24 @@
 			"gradients": [],
 			"palette": [
 				{
-					"color": "#3d275c",
+					"color": "#007582",
 					"name": "Primary",
 					"slug": "primary"
 				},
 				{
-					"color": "#6b43a3",
+					"color": "#045660",
 					"name": "Primary-hover",
 					"slug": "primary-hover"
 				},
 				{
-					"color": "#fae8d2",
+					"color": "#00BDD1",
 					"name": "Secondary",
 					"slug": "secondary"
 				},
 				{
-					"color": "#c3a37b",
+					"color": "#00BDD1",
 					"name": "Secondary-hover",
 					"slug": "secondary-hover"
-				},
-				{
-					"color": "#5c7058",
-					"name": "green medium",
-					"slug": "green-medium"
-				},
-				{
-					"color": "#93a68d",
-					"name": "green light",
-					"slug": "green-light"
-				},
-				{
-					"color": "#3a4537",
-					"name": "green dark",
-					"slug": "green-dark"
 				},
 				{
 					"color": "#1c1c1c",
@@ -117,6 +79,11 @@
 					"color": "#84380e",
 					"name": "Gray warm",
 					"slug": "gray-warm"
+				},
+				{
+					"color": "#98A0B4",
+					"name": "Gray cold",
+					"slug": "gray-cold"
 				},
 				{
 					"color": "#8e8e8e",
@@ -136,8 +103,8 @@
 			]
 		},
 		"layout": {
-			"contentSize": "800px",
-			"wideSize": "1280px",
+			"contentSize": "960px",
+			"wideSize": "1360px",
 			"allowEditing": true,
 			"allowSwitching": true
 		},
@@ -225,22 +192,22 @@
 				},
 				{
 					"name": "Large",
-					"size": "1.125rem",
+					"size": "1.25rem",
 					"slug": "large"
 				},
 				{
 					"name": "X Large",
-					"size": "1.25rem",
+					"size": "1.5rem",
 					"slug": "x-large"
 				},
 				{
 					"name": "XX Large",
-					"size": "1.5rem",
+					"size": "2rem",
 					"slug": "xx-large"
 				},
 				{
 					"name": "XXX Large",
-					"size": "2rem",
+					"size": "2.5rem",
 					"slug": "xxx-large"
 				}
 			]
@@ -257,7 +224,7 @@
 					"letterSpacing": "0.05em"
 				},
 				"border": {
-					"radius": "0px"
+					"radius": "30px"
 				},
 				"spacing": {
 					"padding": {
@@ -281,7 +248,7 @@
 				},
 				"typography": {
 					"fontSize": "clamp(2rem, 5vw, 4rem)",
-					"fontWeight": "700",
+					"fontWeight": "500",
 					"lineHeight": "1.2"
 				}
 			},
@@ -294,7 +261,7 @@
 				},
 				"typography": {
 					"fontSize": "clamp(1.5rem, 4vw, 2rem)",
-					"fontWeight": "700",
+					"fontWeight": "500",
 					"lineHeight": "1.2"
 				}
 			},
@@ -307,7 +274,7 @@
 				},
 				"typography": {
 					"fontSize": "clamp(1.25rem, 3vw, 1.5rem)",
-					"fontWeight": "700",
+					"fontWeight": "500",
 					"lineHeight": "1.2"
 				}
 			},
@@ -320,7 +287,7 @@
 				},
 				"typography": {
 					"fontSize": "1.25rem",
-					"fontWeight": "700",
+					"fontWeight": "500",
 					"lineHeight": "1.2"
 				}
 			},
@@ -333,7 +300,7 @@
 				},
 				"typography": {
 					"fontSize": "1.125rem",
-					"fontWeight": "700",
+					"fontWeight": "500",
 					"lineHeight": "1.2"
 				}
 			},
@@ -346,7 +313,7 @@
 				},
 				"typography": {
 					"fontSize": "1rem",
-					"fontWeight": "700",
+					"fontWeight": "500",
 					"lineHeight": "1.2"
 				}
 			},
@@ -359,7 +326,7 @@
 				},
 				"typography": {
 					"fontSize": "1.3rem",
-					"fontWeight": "600",
+					"fontWeight": "400",
 					"lineHeight": "1.35"
 				}
 			}
@@ -377,8 +344,8 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--body)",
 			"fontSize": "1.3em",
-			"fontWeight": "500",
-			"lineHeight": "1.6"
+			"fontWeight": "400",
+			"lineHeight": "1.2"
 		}
 	},
 	"templateParts": [

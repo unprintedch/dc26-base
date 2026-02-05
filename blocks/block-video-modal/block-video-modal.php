@@ -78,8 +78,9 @@ $is_admin = is_admin();
         <!-- Bouton de déclenchement -->
         <button 
             type="button" 
-            class="video-modal-trigger bg-primary text-white px-6 py-3 rounded-none uppercase font-body font-medium hover:bg-primary-hover transition-colors duration-300"
+            class="video-modal-trigger"
             data-modal-target="<?php echo esc_attr($modal_id); ?>"
+            data-video-src="<?php echo esc_url($video_url); ?>"
             aria-label="<?php echo esc_attr($button_text); ?>"
         >
             <?php if ($thumbnail_url) : ?>
@@ -89,16 +90,26 @@ $is_admin = is_admin();
                         alt="<?php echo esc_attr($video_title ?: $button_text); ?>"
                         class="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                     >
-                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-50 transition-all duration-300">
-                        <div class="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
-                            <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
+                    <div class="video-modal-overlay">
+                        <div class="video-modal-overlay__icon">
+                            <img
+                                src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/play.svg'); ?>"
+                                alt=""
+                                class="video-modal-overlay__icon-image"
+                                aria-hidden="true"
+                            >
                         </div>
                     </div>
                 </div>
             <?php else : ?>
-                <span><?php echo esc_html($button_text); ?></span>
+                <span class="video-modal-trigger__icon">
+                    <img
+                        src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/play.svg'); ?>"
+                        alt=""
+                        class="video-modal-trigger__icon-image"
+                        aria-hidden="true"
+                    >
+                </span>
             <?php endif; ?>
         </button>
 
@@ -134,7 +145,8 @@ $is_admin = is_admin();
                 <div class="video-container relative w-full" style="padding-bottom: 56.25%;">
                     <iframe 
                         class="absolute top-0 left-0 w-full h-full"
-                        src="<?php echo esc_url($video_url); ?>"
+                        src=""
+                        data-src="<?php echo esc_url($video_url); ?>"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
@@ -161,11 +173,14 @@ document.addEventListener('DOMContentLoaded', function() {
         trigger.addEventListener('click', function() {
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            
-            // Charger la vidéo seulement quand la modale s'ouvre
-            const src = iframe.getAttribute('src');
-            if (!src.includes('autoplay')) {
-                iframe.setAttribute('src', src + (src.includes('?') ? '&' : '?') + 'autoplay=1');
+
+            // Charger la vidéo seulement à l'ouverture
+            const baseSrc = trigger.getAttribute('data-video-src') || iframe.getAttribute('data-src') || '';
+            if (baseSrc) {
+                iframe.setAttribute(
+                    'src',
+                    baseSrc + (baseSrc.includes('?') ? '&' : '?') + 'autoplay=1'
+                );
             }
         });
 
@@ -175,9 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
             
             // Arrêter la vidéo en vidant le src
-            const src = iframe.getAttribute('src');
             iframe.setAttribute('src', '');
-            iframe.setAttribute('src', src.replace('&autoplay=1', '').replace('?autoplay=1', ''));
         }
 
         closeBtn.addEventListener('click', closeModal);

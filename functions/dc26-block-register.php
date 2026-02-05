@@ -36,15 +36,20 @@ function dc26_acf_blocks() {
         $block_json = json_decode( file_get_contents( $block_json_path ), true );
         
         if ( isset( $block_json['script'] ) ) {
-            // Extract script filename from the file:./path format
+            // Extract script filename from the file:./path format.
             $script_path = str_replace( 'file:./', '', $block_json['script'] );
             $script_full_path = $block_path . '/' . $script_path;
-            
+
             if ( file_exists( $script_full_path ) ) {
+                $script_deps = array( 'wp-blocks', 'wp-element', 'wp-editor', 'swiper-js' );
+                if ( preg_match( '/(^|\/)view(\.min)?\.js$/', $script_path ) ) {
+                    $script_deps = array();
+                }
+
                 wp_register_script(
                     "dc26-block-{$block}-script",
                     get_template_directory_uri() . "/blocks/{$block}/{$script_path}",
-                    array( 'wp-blocks', 'wp-element', 'wp-editor', 'swiper-js' ),
+                    $script_deps,
                     filemtime( $script_full_path ),
                     true
                 );
@@ -65,6 +70,18 @@ function dc26_acf_blocks() {
         register_block_type( $block_path, $args );
     }
 }
+
+add_action( 'init', function () {
+	register_block_style(
+		'core/template-part',
+		[
+			'name'  => 'sticky-header',
+			'label' => __( 'Sticky header', 'dc26-oav' ),
+		]
+	);
+} );
+
+
 
 
 // require_once( get_template_directory() . '/blocks/block-variation.php' );

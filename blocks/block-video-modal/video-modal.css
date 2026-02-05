@@ -1,29 +1,108 @@
 /* Video Modal Block Styles */
 
-.video-modal-block {
-    @apply w-full;
-}
+
 
 .video-modal-trigger {
-    @apply cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    cursor: pointer;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    padding: 0;
 }
 
+.video-modal-trigger:focus-visible {
+    outline: 2px solid var(--wp--preset--color--primary, #0b7c87);
+    outline-offset: 2px;
+}
+
+.video-modal-trigger__icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-modal-trigger__icon-image {
+   
+    display: block;
+}
+
+
 .video-modal {
-    @apply backdrop-blur-sm;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
     animation: fadeIn 0.3s ease-out;
+}
+
+.video-modal.hidden {
+    display: none;
 }
 
 .video-modal-content {
     animation: slideIn 0.3s ease-out;
     max-height: 90vh;
+    width: 100%;
+    max-width: 64rem;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 .video-modal-close {
-    @apply p-2 rounded-full hover:bg-gray-100 transition-colors duration-200;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.video-modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .video-container {
-    @apply relative;
+    position: relative;
+}
+
+.video-modal-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.video-modal-trigger:hover .video-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.video-modal-overlay__icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-modal-overlay__icon-image {
+    width: 2rem;
+    height: 2rem;
+    display: block;
 }
 
 /* Animations */
@@ -50,7 +129,8 @@
 /* Responsive */
 @media (max-width: 768px) {
     .video-modal-content {
-        @apply mx-2;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
         max-height: 85vh;
     }
     
@@ -61,9 +141,12 @@
 
 /* Preview dans l'éditeur */
 .video-modal-preview {
-    @apply border border-gray-200 rounded-lg p-4 bg-gray-50;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: #f9fafb;
 }
 
 .video-modal-preview img {
-    @apply rounded-lg;
+    border-radius: 0.5rem;
 }

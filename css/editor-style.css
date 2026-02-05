@@ -1,0 +1,12 @@
+/* Editor-only helpers to keep header visible */
+.editor-styles-wrapper .wp-block-template-part.is-style-sticky-header,
+.editor-styles-wrapper .is-root-container > header.wp-block-group.is-style-sticky-header,
+.editor-styles-wrapper .is-root-container > .wp-block-group.is-style-sticky-header {
+	background-color: rgba(0, 0, 0, 0.04);
+}
+
+.editor-styles-wrapper .wp-block-template-part.is-style-sticky-header .has-white-color,
+.editor-styles-wrapper .is-root-container > header.wp-block-group.is-style-sticky-header .has-white-color,
+.editor-styles-wrapper .is-root-container > .wp-block-group.is-style-sticky-header .has-white-color {
+	color: var(--wp--preset--color--black, #111) !important;
+}

@@ -82,3 +82,14 @@
       transition: none;
     }
   }
+
+  .wp-block-navigation-item.alt-navigation {
+    border: 1px solid white;
+    color: var(--wp--preset--color--white);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.025em;
+  }

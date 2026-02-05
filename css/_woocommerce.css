@@ -2,7 +2,8 @@
     display: none;
 }
 
-:root :where(.wp-element-button, .wp-block-button__link) {
+.woocommerce :where(.wp-element-button, .wp-block-button__link),
+.woocommerce-page :where(.wp-element-button, .wp-block-button__link) {
     background-color: var(--wp--preset--color--primary);
     color: white;
     padding-left: 1rem;
