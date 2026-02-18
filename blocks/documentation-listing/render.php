@@ -22,8 +22,8 @@ $is_admin = is_admin();
 
 $query_args = array(
     'posts_per_page' => -1,
-    //'post_type' => array('documentation', 'post'),
-    'post_type' => array('documentation'),
+    'post_type' => array('documentation', 'post', 'page'),
+    // 'post_type' => array('documentation'),
     'post_status' => array('publish', 'private'),
     'orderby' => array('date' => 'DESC'),
     'facetwp' => true,

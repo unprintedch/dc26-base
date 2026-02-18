@@ -1,0 +1,178 @@
+.dc26-member-profile {
+    padding: 2rem 0;
+}
+
+.dc26-member-profile__preview {
+    border: 2px dashed var(--wp--preset--color--gray-light, #f4f4f4);
+    padding: 1.5rem;
+    background: var(--wp--preset--color--white, #fff);
+}
+
+.dc26-member-profile__grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* ── Photo ── */
+
+.dc26-member-profile__photo {
+    position: sticky;
+    top: 2rem;
+}
+
+.dc26-member-profile__img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.dc26-member-profile__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: var(--wp--preset--color--gray-light, #f4f4f4);
+    border-radius: 6px;
+    color: var(--wp--preset--color--gray-medium, #8e8e8e);
+}
+
+/* ── Info column ── */
+
+.dc26-member-profile__name {
+    color: var(--wp--preset--color--primary, #007582);
+    margin: 0 0 0.25rem;
+}
+
+.dc26-member-profile__status {
+    margin: 0 0 1rem;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--wp--preset--color--gray-text, #808080);
+}
+
+.dc26-member-profile__etude {
+    margin: 1.25rem 0 0.5rem;
+}
+
+.dc26-member-profile__etude a {
+    color: var(--wp--preset--color--primary, #007582);
+    text-decoration: none;
+}
+
+.dc26-member-profile__etude a:hover {
+    text-decoration: underline;
+}
+
+.dc26-member-profile__address {
+    margin: 0 0 1.25rem;
+    line-height: 1.6;
+}
+
+/* ── Contact pills ── */
+
+.dc26-member-profile__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dc26-member-profile__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--wp--preset--color--gray-light, #f4f4f4);
+    padding: 0.45rem 0.85rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.95rem;
+    width: fit-content;
+    transition: background-color 0.15s ease;
+}
+
+.dc26-member-profile__pill:hover {
+    background: #e8e8e8;
+}
+
+.dc26-member-profile__pill img {
+    flex-shrink: 0;
+}
+
+/* ── Meta column (specialities, languages, commissions) ── */
+
+.dc26-member-profile__meta h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.dc26-member-profile__meta h4:not(:first-child) {
+    margin-top: 1.5rem;
+}
+
+.dc26-member-profile__tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.dc26-member-profile__tag {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: var(--wp--preset--color--gray-light, #f4f4f4);
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.875rem;
+    transition: background-color 0.15s ease;
+}
+
+.dc26-member-profile__tag:hover {
+    background: var(--wp--preset--color--primary, #007582);
+    color: var(--wp--preset--color--white, #fff);
+}
+
+.dc26-member-profile__commissions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dc26-member-profile__commissions li {
+    padding: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+.dc26-member-profile__commissions em {
+    color: var(--wp--preset--color--gray-text, #808080);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 960px) {
+    .dc26-member-profile__grid {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .dc26-member-profile__meta {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .dc26-member-profile__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dc26-member-profile__photo {
+        position: static;
+        max-width: 200px;
+    }
+}
