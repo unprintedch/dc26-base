@@ -14,6 +14,7 @@
         "mode": "preview",
         "renderTemplate": "render.php"
     },
+    "script": "file:./view.js",
     "supports": {
         "align": true,
         "anchor": true,

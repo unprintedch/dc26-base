@@ -48,10 +48,15 @@
 }
 
 .dc26-member-profile__status {
-    margin: 0 0 1rem;
+    margin: 0 0 0.5rem;
     font-weight: 300;
     font-size: 1rem;
     color: var(--wp--preset--color--gray-text, #808080);
+}
+
+.dc26-member-profile__titre {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
 }
 
 .dc26-member-profile__etude {
@@ -70,6 +75,19 @@
 .dc26-member-profile__address {
     margin: 0 0 1.25rem;
     line-height: 1.6;
+}
+
+.dc26-member-profile__notice {
+    font-size: 0.85rem;
+    color: var(--wp--preset--color--gray-text, #808080);
+    font-style: italic;
+    margin: 0 0 0.25rem;
+}
+
+.dc26-member-profile__empty {
+    font-size: 0.9rem;
+    color: var(--wp--preset--color--gray-text, #808080);
+    margin: 0;
 }
 
 /* ── Contact pills ── */
@@ -102,16 +120,31 @@
     flex-shrink: 0;
 }
 
-/* ── Meta column (specialities, languages, commissions) ── */
+/* ── Meta column ── */
 
-.dc26-member-profile__meta h4 {
+.dc26-member-profile__meta h4,
+[data-section] h4 {
     margin: 0 0 0.5rem;
     font-size: 1rem;
     font-weight: 600;
 }
 
-.dc26-member-profile__meta h4:not(:first-child) {
+.dc26-member-profile__meta [data-section] + [data-section],
+.dc26-member-profile__meta .dc26-member-profile__section-readonly {
     margin-top: 1.5rem;
+}
+
+.dc26-member-profile__meta strong {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--wp--preset--color--gray-text, #808080);
+    margin: 0.75rem 0 0.35rem;
+}
+
+.dc26-member-profile__meta strong:first-child {
+    margin-top: 0;
 }
 
 .dc26-member-profile__tags {
@@ -154,7 +187,311 @@
     color: var(--wp--preset--color--gray-text, #808080);
 }
 
-/* ── Responsive ── */
+/* ══════════════════════════════════════════════
+   SECTION HEADERS & EDIT TOGGLE
+   ══════════════════════════════════════════════ */
+
+.dc26-member-profile__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.dc26-member-profile__section-header h3,
+.dc26-member-profile__section-header h4 {
+    margin: 0;
+}
+
+.dc26-member-profile__edit-btn {
+    background: none;
+    border: 1px solid var(--wp--preset--color--gray-medium, #8e8e8e);
+    border-radius: 4px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.8rem;
+    color: var(--wp--preset--color--gray-text, #808080);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.dc26-member-profile__edit-btn:hover {
+    border-color: var(--wp--preset--color--primary, #007582);
+    color: var(--wp--preset--color--primary, #007582);
+}
+
+/* ══════════════════════════════════════════════
+   FORM / EDIT MODE
+   ══════════════════════════════════════════════ */
+
+.dc26-member-profile__form {
+    display: none;
+}
+
+.dc26-member-profile__form--always-visible {
+    display: block;
+}
+
+.is-editing > .dc26-member-profile__display,
+.is-editing > .dc26-member-profile__section-header .dc26-member-profile__edit-btn {
+    display: none;
+}
+
+.is-editing > .dc26-member-profile__form {
+    display: block;
+}
+
+/* Fields */
+
+.dc26-member-profile__field {
+    margin-bottom: 0.75rem;
+}
+
+.dc26-member-profile__field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--wp--preset--color--gray-text, #808080);
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.dc26-member-profile__field input[type="text"],
+.dc26-member-profile__field input[type="email"],
+.dc26-member-profile__field input[type="tel"],
+.dc26-member-profile__field input[type="url"],
+.dc26-member-profile__field input[type="password"],
+.dc26-member-profile__field select,
+.dc26-member-profile__field textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: #fff;
+    transition: border-color 0.15s ease;
+}
+
+.dc26-member-profile__field input:focus,
+.dc26-member-profile__field select:focus,
+.dc26-member-profile__field textarea:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--primary, #007582);
+    box-shadow: 0 0 0 2px rgba(0, 117, 130, 0.15);
+}
+
+.dc26-member-profile__field input[type="file"] {
+    font-size: 0.9rem;
+}
+
+.dc26-member-profile__field small {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.78rem;
+    color: var(--wp--preset--color--gray-text, #808080);
+}
+
+.dc26-member-profile__field--short {
+    max-width: 120px;
+}
+
+/* Form actions */
+
+.dc26-member-profile__form-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.dc26-member-profile__save-btn {
+    background: var(--wp--preset--color--primary, #007582);
+    color: var(--wp--preset--color--white, #fff);
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.dc26-member-profile__save-btn:hover {
+    background: var(--wp--preset--color--primary-hover, #045660);
+}
+
+.dc26-member-profile__save-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.dc26-member-profile__cancel-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--wp--preset--color--gray-text, #808080);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.dc26-member-profile__cancel-btn:hover {
+    color: var(--wp--preset--color--gray-dark, #1c1c1c);
+}
+
+/* Feedback */
+
+.dc26-member-profile__feedback {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    min-height: 1.25em;
+}
+
+.dc26-member-profile__feedback:empty {
+    display: none;
+}
+
+.dc26-member-profile__feedback--success {
+    color: #0a7c3e;
+}
+
+.dc26-member-profile__feedback--error {
+    color: #c0392b;
+}
+
+/* Success animation */
+
+.is-saved {
+    position: relative;
+}
+
+.is-saved::after {
+    content: '\2713';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #0a7c3e;
+    color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    animation: mp-fade-out 2s ease forwards;
+}
+
+@keyframes mp-fade-out {
+    0%, 70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════
+   TOM SELECT OVERRIDES (chips multi-select)
+   ══════════════════════════════════════════════ */
+
+[data-section="specialities"] .ts-wrapper,
+[data-section="languages"] .ts-wrapper {
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+[data-section] .ts-control {
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    padding: 0.35rem 0.5rem;
+    min-height: 42px;
+    background: #fff;
+    box-shadow: none;
+}
+
+[data-section] .ts-control:focus-within,
+[data-section] .ts-wrapper.focus .ts-control {
+    border-color: var(--wp--preset--color--primary, #007582);
+    box-shadow: 0 0 0 2px rgba(0, 117, 130, 0.15);
+}
+
+[data-section] .ts-control input {
+    font-size: 0.9rem;
+}
+
+.dc26-ts-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--wp--preset--color--primary, #007582);
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+[data-section] .ts-wrapper .item .remove {
+    border-left-color: rgba(255, 255, 255, 0.3);
+    margin-left: 0.25rem;
+}
+
+.dc26-ts-option {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.9rem;
+}
+
+[data-section] .ts-dropdown {
+    border: 1px solid #d0d0d0;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: -1px;
+}
+
+[data-section] .ts-dropdown .active {
+    background: var(--wp--preset--color--gray-light, #f4f4f4);
+    color: inherit;
+}
+
+[data-section] .ts-dropdown .optgroup-header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--wp--preset--color--gray-text, #808080);
+    padding: 0.5rem 0.65rem 0.2rem;
+}
+
+/* ══════════════════════════════════════════════
+   PASSWORD SECTION
+   ══════════════════════════════════════════════ */
+
+.dc26-member-profile__password-section {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: var(--wp--preset--color--gray-light, #f4f4f4);
+    border-radius: 6px;
+    max-width: 480px;
+}
+
+.dc26-member-profile__password-section h4 {
+    margin: 0 0 1rem;
+}
+
+/* ══════════════════════════════════════════════
+   SECTION DIVIDERS
+   ══════════════════════════════════════════════ */
+
+.dc26-member-profile__info > [data-section] + [data-section] {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--wp--preset--color--gray-light, #f4f4f4);
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
 
 @media (max-width: 960px) {
     .dc26-member-profile__grid {
@@ -174,5 +511,9 @@
     .dc26-member-profile__photo {
         position: static;
         max-width: 200px;
+    }
+
+    .dc26-member-profile__checkbox-grid {
+        grid-template-columns: 1fr;
     }
 }

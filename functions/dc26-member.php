@@ -112,6 +112,66 @@ function dc26_member_status_label( int $post_id, string $genre ): string {
 }
 
 /**
+ * Get all speciality terms with their OAV IDs, split into FSA and regular.
+ *
+ * @return array{fsa: array, regular: array}
+ */
+function dc26_get_all_specialities(): array {
+    $terms = get_terms( [
+        'taxonomy'   => 'speciality',
+        'hide_empty' => false,
+    ] );
+
+    $fsa     = [];
+    $regular = [];
+
+    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+        foreach ( $terms as $term ) {
+            $item = [
+                'term_id' => $term->term_id,
+                'name'    => $term->name,
+                'slug'    => $term->slug,
+                'oav_id'  => get_field( 'id_specialite_oav', $term ),
+                'parent'  => (int) $term->parent,
+            ];
+            if ( 110 === (int) $term->parent ) {
+                $fsa[] = $item;
+            } else {
+                $regular[] = $item;
+            }
+        }
+    }
+
+    return [ 'fsa' => $fsa, 'regular' => $regular ];
+}
+
+/**
+ * Get all language terms with their OAV IDs.
+ *
+ * @return array
+ */
+function dc26_get_all_languages(): array {
+    $terms  = get_terms( [
+        'taxonomy'   => 'language',
+        'hide_empty' => false,
+    ] );
+    $result = [];
+
+    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+        foreach ( $terms as $term ) {
+            $result[] = [
+                'term_id' => $term->term_id,
+                'name'    => $term->name,
+                'slug'    => $term->slug,
+                'oav_id'  => get_field( 'id_langue_oav', $term ),
+            ];
+        }
+    }
+
+    return $result;
+}
+
+/**
  * Gather every displayable field for a member into a single array.
  *
  * Handles the etude-vs-personal address logic internally.
