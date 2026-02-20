@@ -10,6 +10,17 @@
   var sections    = root.querySelectorAll('[data-section]');
   var tsInstances = {};
 
+  function updateSpecCounter(ts, max, counterEl, noticeEl) {
+    var count = ts.items.length;
+    if (counterEl) {
+      counterEl.textContent = count + '/' + max;
+      counterEl.classList.toggle('is-full', count >= max);
+    }
+    if (noticeEl) {
+      noticeEl.classList.toggle('is-visible', count >= max);
+    }
+  }
+
   function initTomSelect() {
     if (typeof TomSelect === 'undefined') return;
 
@@ -17,9 +28,13 @@
     var langSelect = root.querySelector('#mp-languages');
 
     if (specSelect && !tsInstances.specialities) {
+      var specMax = 7;
+      var specCounter = document.getElementById('mp-specialities-counter');
+      var specNotice  = document.getElementById('mp-specialities-notice');
+
       tsInstances.specialities = new TomSelect(specSelect, {
         plugins: ['remove_button', 'optgroup_columns'],
-        maxItems: null,
+        maxItems: specMax,
         searchField: ['text'],
         placeholder: specSelect.getAttribute('placeholder') || '',
         render: {
@@ -30,7 +45,12 @@
             return '<div class="dc26-ts-option">' + escape(data.text) + '</div>';
           },
         },
+        onChange: function () {
+          updateSpecCounter(this, specMax, specCounter, specNotice);
+        },
       });
+
+      updateSpecCounter(tsInstances.specialities, specMax, specCounter, specNotice);
     }
 
     if (langSelect && !tsInstances.languages) {
@@ -52,6 +72,40 @@
   }
 
   initTomSelect();
+
+  // Password visibility toggles
+  root.querySelectorAll('.dc26-member-profile__pw-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var input = btn.closest('.dc26-member-profile__pw-input-wrap').querySelector('input');
+      var isVisible = input.type === 'text';
+      input.type = isVisible ? 'password' : 'text';
+      btn.classList.toggle('is-visible', !isVisible);
+      btn.setAttribute('aria-label', isVisible ? 'Afficher le mot de passe' : 'Masquer le mot de passe');
+    });
+  });
+
+  // Password suggestion
+  var suggestBtn = document.getElementById('mp-pw-suggest');
+  var newPwInput = document.getElementById('mp-new-pw');
+  if (suggestBtn && newPwInput) {
+    suggestBtn.addEventListener('click', function () {
+      var chars = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%&*';
+      var pw = '';
+      var arr = new Uint8Array(16);
+      crypto.getRandomValues(arr);
+      for (var i = 0; i < arr.length; i++) {
+        pw += chars[arr[i] % chars.length];
+      }
+      newPwInput.type = 'text';
+      newPwInput.value = pw;
+      newPwInput.select();
+      var toggleBtn = newPwInput.closest('.dc26-member-profile__pw-input-wrap').querySelector('.dc26-member-profile__pw-toggle');
+      if (toggleBtn) {
+        toggleBtn.classList.add('is-visible');
+        toggleBtn.setAttribute('aria-label', 'Masquer le mot de passe');
+      }
+    });
+  }
 
   sections.forEach(function (section) {
     var sectionName = section.dataset.section;

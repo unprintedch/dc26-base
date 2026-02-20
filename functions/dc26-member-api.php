@@ -62,10 +62,6 @@ function dc26_rest_member_update( WP_REST_Request $request ): WP_REST_Response {
             break;
 
         case 'contact':
-            $email = sanitize_email( $request->get_param( 'email' ) ?? '' );
-            if ( $email ) {
-                update_field( 'email', $email, $post_id );
-            }
             update_field( 'tel1', sanitize_text_field( $request->get_param( 'tel1' ) ?? '' ), $post_id );
             update_field( 'fax', sanitize_text_field( $request->get_param( 'fax' ) ?? '' ), $post_id );
             $homepage = $request->get_param( 'homepage' ) ?? '';
@@ -105,7 +101,6 @@ function dc26_rest_member_update( WP_REST_Request $request ): WP_REST_Response {
         case 'password':
             $current  = $request->get_param( 'current_password' ) ?? '';
             $new_pass = $request->get_param( 'new_password' ) ?? '';
-            $confirm  = $request->get_param( 'confirm_password' ) ?? '';
 
             $user = wp_get_current_user();
             if ( ! wp_check_password( $current, $user->user_pass, $user->ID ) ) {
@@ -118,12 +113,6 @@ function dc26_rest_member_update( WP_REST_Request $request ): WP_REST_Response {
                 return new WP_REST_Response( [
                     'success' => false,
                     'message' => 'Le nouveau mot de passe doit contenir au moins 8 caractères.',
-                ], 400 );
-            }
-            if ( $new_pass !== $confirm ) {
-                return new WP_REST_Response( [
-                    'success' => false,
-                    'message' => 'Les mots de passe ne correspondent pas.',
                 ], 400 );
             }
             wp_set_password( $new_pass, $user->ID );
