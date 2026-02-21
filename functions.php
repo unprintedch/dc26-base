@@ -36,6 +36,15 @@ require_once get_template_directory() . '/functions/dc26-member-api.php';
  */
 add_theme_support('align-wide');
 
+add_filter( 'block_categories_all', function ( array $categories ): array {
+    array_unshift( $categories, [
+        'slug'  => 'dc26',
+        'title' => __( 'OAV', 'dc26-oav' ),
+        'icon'  => null,
+    ] );
+    return $categories;
+} );
+
 // Editor-only styles to improve block editor visibility.
 add_theme_support('editor-styles');
 add_editor_style('css/editor-style.css');
