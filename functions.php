@@ -8,6 +8,7 @@ require_once get_template_directory() . '/functions/dc26-woocommerce.php';
 require_once get_template_directory() . '/functions/dc26-facet.php';
 require_once get_template_directory() . '/functions/dc26-member.php';
 require_once get_template_directory() . '/functions/dc26-member-api.php';
+require_once get_template_directory() . '/functions/dc26-examen-api.php';
 
 /**
  * dc26-base functions and definitions.
