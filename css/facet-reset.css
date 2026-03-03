@@ -23,6 +23,32 @@
     appearance: none;
 }
 
+/* Normalize FacetWP native dropdown look across browsers */
+.facetwp-type-dropdown .facetwp-dropdown,
+.facetwp-facet-tri .facetwp-dropdown,
+.facetwp-facet-date_conference .facetwp-dropdown {
+    display: block;
+    width: 100%;
+    min-width: 12rem;
+    border: 0;
+    background: transparent;
+    color: var(--facet-color-primary);
+    font-size: var(--facet-font-size);
+    line-height: 1.4;
+    font-family: var(--wp--preset--font-family--body, system-ui, -apple-system, sans-serif);
+    box-shadow: none;
+    outline: none;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.facetwp-type-dropdown .facetwp-dropdown:focus,
+.facetwp-facet-tri .facetwp-dropdown:focus,
+.facetwp-facet-date_conference .facetwp-dropdown:focus {
+    outline: none;
+}
+
 .facetwp-type-search .facetwp-input-wrap {
     display: flex;
     align-items: center;
@@ -107,10 +133,42 @@
     position: relative;
 }
 
-.facetwp-type-dropdown::after,
-.facetwp-facet-tri::after {
-    content: "\f078";
-    font: var(--fa-font-solid);
+/* Date facet rendered as native date input:
+   style it like theme dropdowns for visual consistency */
+.facetwp-type-date,
+.facetwp-facet-date_conference {
+    padding: 12px;
+    border-radius: var(--facet-radius-sm);
+    padding-right: 0.75rem;
+    background-color: var(--facet-color-bg);
+    position: relative;
+}
+
+.facetwp-type-date input,
+.facetwp-facet-date_conference input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--facet-color-primary);
+    font-size: var(--facet-font-size);
+    line-height: 1.4;
+    box-shadow: none;
+    outline: none;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: var(--wp--preset--font-family--body, system-ui, -apple-system, sans-serif);
+}
+
+.facetwp-type-date input::-webkit-calendar-picker-indicator,
+.facetwp-facet-date_conference input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.facetwp-type-date::after,
+.facetwp-facet-date_conference::after {
+    content: "";
     position: absolute;
     right: 0;
     top: 0;
@@ -124,6 +182,51 @@
     display: flex;
     align-items: center;
     pointer-events: none;
+    width: 20px;
+    background-color: var(--facet-color-primary);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7l5 5 5-5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 20px 20px;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7l5 5 5-5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 20px 20px;
+}
+
+.facetwp-type-date input::-webkit-datetime-edit,
+.facetwp-facet-date_conference input::-webkit-datetime-edit,
+.facetwp-type-date input::-webkit-datetime-edit-fields-wrapper,
+.facetwp-facet-date_conference input::-webkit-datetime-edit-fields-wrapper,
+.facetwp-type-date input::-webkit-datetime-edit-text,
+.facetwp-facet-date_conference input::-webkit-datetime-edit-text,
+.facetwp-type-date input::-webkit-datetime-edit-year-field,
+.facetwp-facet-date_conference input::-webkit-datetime-edit-year-field,
+.facetwp-type-date input::-webkit-datetime-edit-month-field,
+.facetwp-facet-date_conference input::-webkit-datetime-edit-month-field,
+.facetwp-type-date input::-webkit-datetime-edit-day-field,
+.facetwp-facet-date_conference input::-webkit-datetime-edit-day-field {
+    color: var(--facet-color-primary);
+    padding: 0;
+    margin: 0;
+    line-height: 1.4;
+    font-family: inherit;
+}
+
+.facetwp-type-dropdown::after,
+.facetwp-facet-tri::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    z-index: 10;
+    background-color: var(--facet-color-bg);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    width: 20px;
+    background-color: var(--facet-color-primary);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7l5 5 5-5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 20px 20px;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7l5 5 5-5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 20px 20px;
 }
 
 .facetwp-radio .facetwp-counter {

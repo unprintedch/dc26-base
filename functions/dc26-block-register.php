@@ -79,6 +79,30 @@ add_action( 'init', function () {
 			'label' => __( 'Sticky header', 'dc26-oav' ),
 		]
 	);
+
+	register_block_style(
+		'core/button',
+		[
+			'name'  => 'dc26-ghost-arrow',
+			'label' => __( 'Sans fond + fleche', 'dc26-oav' ),
+		]
+	);
+
+	register_block_style(
+		'core/button',
+		[
+			'name'  => 'dc26-ghost-download',
+			'label' => __( 'Sans fond + download', 'dc26-oav' ),
+		]
+	);
+
+	register_block_style(
+		'core/buttons',
+		[
+			'name'  => 'dc26-buttons-doc-list',
+			'label' => __( 'Liste docs alignee', 'dc26-oav' ),
+		]
+	);
 } );
 
 

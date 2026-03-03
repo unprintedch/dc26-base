@@ -55,7 +55,7 @@ header.wp-block-template-part.is-style-sticky-header {
 
 .is-style-sticky-header .wp-block-site-logo {
 	flex: 0 0 auto;
-	opacity: 0;
+	opacity: 1;
 	transform: translateY(0);
 	transition: opacity 200ms ease, transform 200ms ease;
 }
@@ -75,7 +75,9 @@ header.wp-block-template-part.is-style-sticky-header {
 	backdrop-filter: none;
 }
 
-.is-style-sticky-header.is-top .wp-block-site-logo {
+/* Hide logo only on homepage while header is at top */
+.home .is-style-sticky-header.is-top .wp-block-site-logo,
+.front-page .is-style-sticky-header.is-top .wp-block-site-logo {
 	opacity: 0;
 	transform: translateY(0);
 	pointer-events: auto;
