@@ -1,14 +1,10 @@
 <?php
 
 require_once get_template_directory() . '/functions/dc26-enqueue.php';
-require_once get_template_directory() . '/functions/dc26-login-screen.php';
 require_once get_template_directory() . '/functions/dc26-block-register.php';
 require_once get_template_directory() . '/functions/dc26-menu-walker.php';
 require_once get_template_directory() . '/functions/dc26-woocommerce.php';
 require_once get_template_directory() . '/functions/dc26-facet.php';
-require_once get_template_directory() . '/functions/dc26-member.php';
-require_once get_template_directory() . '/functions/dc26-member-api.php';
-require_once get_template_directory() . '/functions/dc26-examen-api.php';
 
 /**
  * dc26-base functions and definitions.
@@ -40,7 +36,7 @@ add_theme_support('align-wide');
 add_filter( 'block_categories_all', function ( array $categories ): array {
     array_unshift( $categories, [
         'slug'  => 'dc26',
-        'title' => __( 'OAV', 'dc26-oav' ),
+        'title' => __( 'DC26 Blocks', 'dc26-base' ),
         'icon'  => null,
     ] );
     return $categories;
