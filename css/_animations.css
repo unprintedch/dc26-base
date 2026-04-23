@@ -1,0 +1,61 @@
+/* =========================================================
+   DC26 — Animations utilitaires
+   Usage : ajouter la classe sur un bloc dans l'éditeur WP
+   ("CSS additionnel" dans le panneau droit)
+
+   Classes disponibles :
+     dc26-anim-up      fade + monte
+     dc26-anim-fade    fade simple
+     dc26-anim-left    fade + glisse depuis la gauche
+
+   Stagger optionnel via CSS variable sur l'élément :
+     style="--anim-delay: 0.15s"
+   ========================================================= */
+
+@keyframes dc26FadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dc26Fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes dc26FadeLeft {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* État initial — caché avant que JS ajoute .is-visible */
+.dc26-anim-up,
+.dc26-anim-fade,
+.dc26-anim-left {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .dc26-anim-up.is-visible {
+        animation: dc26FadeUp 1s cubic-bezier(0.4, 0, 0.2, 1)
+            var(--anim-delay, 0s) both;
+    }
+
+    .dc26-anim-fade.is-visible {
+        animation: dc26Fade 1s cubic-bezier(0.4, 0, 0.2, 1)
+            var(--anim-delay, 0s) both;
+    }
+
+    .dc26-anim-left.is-visible {
+        animation: dc26FadeLeft 1s cubic-bezier(0.4, 0, 0.2, 1)
+            var(--anim-delay, 0s) both;
+    }
+}
+
+/* Accessibilité : pas d'animation si préférence système */
+@media (prefers-reduced-motion: reduce) {
+    .dc26-anim-up.is-visible,
+    .dc26-anim-fade.is-visible,
+    .dc26-anim-left.is-visible {
+        opacity: 1;
+    }
+}
