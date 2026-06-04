@@ -1,0 +1,18 @@
+{
+  "name": "dc26/scroll-image",
+  "title": "Image Scroll",
+  "description": "Deux images avec crossfade au scroll — état haut et état scrollé.",
+  "category": "dc26",
+  "icon": "format-image",
+  "keywords": ["image", "scroll", "logo", "crossfade"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
+  },
+  "script": "file:./view.js",
+  "supports": {
+    "anchor": true,
+    "customClassName": true
+  }
+}

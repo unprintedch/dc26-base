@@ -39,7 +39,7 @@ function initHeaderSticky() {
 	updateState();
 
 	window.addEventListener('scroll', updateState, { passive: true });
-	window.addEventListener('load', updateState);
+	window.addEventListener('load', () => { applyHeaderHeight(); updateState(); });
 	window.addEventListener('resize', applyHeaderHeight);
 }
 

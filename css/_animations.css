@@ -1,61 +1,53 @@
 /* =========================================================
-   DC26 — Animations utilitaires
-   Usage : ajouter la classe sur un bloc dans l'éditeur WP
-   ("CSS additionnel" dans le panneau droit)
+   DC26 — Animations utilitaires (GSAP + ScrollTrigger)
+   Usage : ajouter la classe dans "CSS additionnel" d'un bloc
 
-   Classes disponibles :
-     dc26-anim-up      fade + monte
-     dc26-anim-fade    fade simple
-     dc26-anim-left    fade + glisse depuis la gauche
+   Scroll reveal :
+     reveal              fade + monte au scroll
+     reveal-delay-1…5   délai 0.1s à 0.5s (combiner avec reveal)
 
-   Stagger optionnel via CSS variable sur l'élément :
-     style="--anim-delay: 0.15s"
+   Parallax :
+     parallax-slow       subtil (0.08)
+     parallax            standard (0.15)
+     parallax-fast       prononcé (0.25)
+
+   Cas image : <div class="parallax-wrap"><img class="parallax"></div>
+   Cas cover/group : ajouter la classe sur le bloc directement
    ========================================================= */
 
-@keyframes dc26FadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+/* Wrapper parallax — overflow hidden pour couper le débord */
+.parallax-wrap {
+    overflow: hidden;
 }
 
-@keyframes dc26Fade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+/* Images directes dans .parallax-wrap */
+.parallax-wrap .parallax,
+.parallax-wrap .parallax-slow,
+.parallax-wrap .parallax-fast {
+    will-change: transform;
+    transform: scale(1.2);
+    transform-origin: center center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-@keyframes dc26FadeLeft {
-    from { opacity: 0; transform: translateX(-16px); }
-    to   { opacity: 1; transform: translateX(0); }
+/* Cover/Group block — image de fond */
+.wp-block-cover.parallax .wp-block-cover__image-background,
+.wp-block-cover.parallax-slow .wp-block-cover__image-background,
+.wp-block-cover.parallax-fast .wp-block-cover__image-background {
+    will-change: transform;
+    transform: scale(1.2);
 }
 
-/* État initial — caché avant que JS ajoute .is-visible */
-.dc26-anim-up,
-.dc26-anim-fade,
-.dc26-anim-left {
-    opacity: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .dc26-anim-up.is-visible {
-        animation: dc26FadeUp 1s cubic-bezier(0.4, 0, 0.2, 1)
-            var(--anim-delay, 0s) both;
-    }
-
-    .dc26-anim-fade.is-visible {
-        animation: dc26Fade 1s cubic-bezier(0.4, 0, 0.2, 1)
-            var(--anim-delay, 0s) both;
-    }
-
-    .dc26-anim-left.is-visible {
-        animation: dc26FadeLeft 1s cubic-bezier(0.4, 0, 0.2, 1)
-            var(--anim-delay, 0s) both;
-    }
-}
-
-/* Accessibilité : pas d'animation si préférence système */
+/* Accessibilité — annule toutes les animations */
 @media (prefers-reduced-motion: reduce) {
-    .dc26-anim-up.is-visible,
-    .dc26-anim-fade.is-visible,
-    .dc26-anim-left.is-visible {
-        opacity: 1;
+    .parallax-wrap .parallax,
+    .parallax-wrap .parallax-slow,
+    .parallax-wrap .parallax-fast,
+    .wp-block-cover.parallax .wp-block-cover__image-background,
+    .wp-block-cover.parallax-slow .wp-block-cover__image-background,
+    .wp-block-cover.parallax-fast .wp-block-cover__image-background {
+        transform: none;
     }
 }

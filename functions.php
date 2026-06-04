@@ -22,6 +22,7 @@ require_once get_template_directory() . '/functions/dc26-block-register.php';
 require_once get_template_directory() . '/functions/dc26-menu-walker.php';
 require_once get_template_directory() . '/functions/dc26-woocommerce.php';
 require_once get_template_directory() . '/functions/dc26-facet.php';
+require_once get_template_directory() . '/functions/dc26-query-order.php';
 
 /**
  * dc26-base functions and definitions.

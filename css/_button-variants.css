@@ -6,6 +6,37 @@
     justify-content: center;
 }
 
+.wp-block-button.is-style-dc26-outline-arrow .wp-block-button__link {
+    padding: 0.65rem 1.5rem;
+    border: 1.5px solid currentColor;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--wp--preset--color--primary, #007582);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    line-height: 1;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.wp-block-button.is-style-dc26-outline-arrow .wp-block-button__link::before {
+    content: '→';
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.wp-block-button.is-style-dc26-outline-arrow .wp-block-button__link:hover {
+    background: var(--wp--preset--color--primary, #007582);
+    color: var(--wp--preset--color--white, #ffffff);
+    text-decoration: none;
+}
+
+.wp-block-button.is-style-dc26-outline-arrow .wp-block-button__link:focus-visible {
+    outline: 2px solid var(--wp--preset--color--primary, #007582);
+    outline-offset: 2px;
+}
+
 .wp-block-buttons.is-style-dc26-buttons-doc-list {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,147 @@
+{
+    "key": "group_dc26_scroll_image",
+    "title": "BLOCK – Image Scroll",
+    "fields": [
+        {
+            "key": "field_si_image_default",
+            "label": "Image par défaut",
+            "name": "image_default",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Affichée quand la page est en haut.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_si_image_scroll",
+            "label": "Image on scroll",
+            "name": "image_scroll",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Affichée après le seuil de scroll.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_si_threshold",
+            "label": "Seuil scroll (px)",
+            "name": "scroll_threshold",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Nombre de pixels scrollés avant le crossfade. Défaut : 64 (identique au header sticky).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 64,
+            "min": 0,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": 64,
+            "step": 1,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_si_max_height",
+            "label": "Hauteur max (px)",
+            "name": "max_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Hauteur maximale des images. Laisser vide pour hauteur naturelle.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_si_link_home",
+            "label": "Lien accueil",
+            "name": "link_home",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enveloppe le bloc dans un lien vers la page d'accueil.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Activer le lien home",
+            "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "dc26\/scroll-image"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Champs pour le bloc Image Scroll",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1777494000
+}

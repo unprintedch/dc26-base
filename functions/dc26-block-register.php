@@ -100,7 +100,7 @@ add_action( 'init', function () {
 		'core/template-part',
 		[
 			'name'  => 'sticky-header',
-			'label' => __( 'Sticky header', 'dc26-oav' ),
+			'label' => __( 'Sticky header', 'dc26-base' ),
 		]
 	);
 
@@ -108,7 +108,7 @@ add_action( 'init', function () {
 		'core/button',
 		[
 			'name'  => 'dc26-ghost-arrow',
-			'label' => __( 'Sans fond + fleche', 'dc26-oav' ),
+			'label' => __( 'Sans fond + fleche', 'dc26-base' ),
 		]
 	);
 
@@ -116,7 +116,15 @@ add_action( 'init', function () {
 		'core/button',
 		[
 			'name'  => 'dc26-ghost-download',
-			'label' => __( 'Sans fond + download', 'dc26-oav' ),
+			'label' => __( 'Sans fond + download', 'dc26-base' ),
+		]
+	);
+
+	register_block_style(
+		'core/button',
+		[
+			'name'  => 'dc26-outline-arrow',
+			'label' => __( 'Contour + fleche', 'dc26-base' ),
 		]
 	);
 
@@ -124,7 +132,7 @@ add_action( 'init', function () {
 		'core/buttons',
 		[
 			'name'  => 'dc26-buttons-doc-list',
-			'label' => __( 'Liste docs alignee', 'dc26-oav' ),
+			'label' => __( 'Liste docs alignee', 'dc26-base' ),
 		]
 	);
 
@@ -132,13 +140,43 @@ add_action( 'init', function () {
 		'core/page-list',
 		[
 			'name'  => 'dc26-page-grid-buttons',
-			'label' => __( 'Grille boutons', 'dc26' ),
+			'label' => __( 'Grille boutons', 'dc26-base' ),
+		]
+	);
+
+	register_block_style(
+		'core/list',
+		[
+			'name'  => 'check',
+			'label' => __( 'Check', 'dc26-base' ),
+		]
+	);
+
+	register_block_style(
+		'core/list',
+		[
+			'name'  => 'dc26-check-cross',
+			'label' => __( 'Croix', 'dc26-base' ),
 		]
 	);
 } );
 
 
 
+
+// Charge les ACF JSON depuis le thème enfant ET le thème parent
+add_filter('acf/settings/load_json', function (array $paths): array {
+    $template_dir   = get_template_directory();
+    $stylesheet_dir = get_stylesheet_directory();
+
+    $paths[] = $stylesheet_dir . '/acf-json';
+
+    if ($template_dir !== $stylesheet_dir) {
+        $paths[] = $template_dir . '/acf-json';
+    }
+
+    return array_unique($paths);
+});
 
 // require_once( get_template_directory() . '/blocks/block-variation.php' );
 // remove_theme_support( 'core-block-patterns' );
