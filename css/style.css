@@ -38,9 +38,10 @@ body {
     transition: padding-top 0.3s ease;
 }
 
-/* Remove global block gap before footer only */
-:where(.wp-site-blocks) > footer {
+/* Remove global block gap on all root-level blocks */
+:where(.wp-site-blocks) > * {
     margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 .logged-in .dc26-navigation {
