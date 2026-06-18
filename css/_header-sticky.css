@@ -2,20 +2,18 @@
   HEADER STICKY - STATE-BASED
   =================================== */
 
-.wp-block-template-part.is-style-sticky-header {
-	position: fixed;
+header.wp-block-template-part.is-style-sticky-header {
+	position: sticky;
 	top: 0;
-	left: 0;
-	right: 0;
 	z-index: 1000;
 }
 
-.admin-bar .wp-block-template-part.is-style-sticky-header {
+.admin-bar header.wp-block-template-part.is-style-sticky-header {
 	top: var(--wp-admin--admin-bar--height, 0px);
 }
 
-.page-template-page-no-title .wp-block-template-part.is-style-sticky-header,
-.search-results .wp-block-template-part.is-style-sticky-header {
+.page-template-page-no-title header.wp-block-template-part.is-style-sticky-header,
+.search-results header.wp-block-template-part.is-style-sticky-header {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -23,8 +21,8 @@
 	z-index: 1000;
 }
 
-.admin-bar.page-template-page-no-title .wp-block-template-part.is-style-sticky-header,
-.admin-bar.search-results .wp-block-template-part.is-style-sticky-header {
+.admin-bar.page-template-page-no-title header.wp-block-template-part.is-style-sticky-header,
+.admin-bar.search-results header.wp-block-template-part.is-style-sticky-header {
 	top: var(--wp-admin--admin-bar--height, 0px);
 }
 
@@ -39,6 +37,10 @@
 .is-style-sticky-header > header.wp-block-group,
 .is-style-sticky-header > .wp-block-group {
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
 	background-color: transparent;
 	box-shadow: none;
 	-webkit-backdrop-filter: none;
@@ -50,6 +52,14 @@
 		-webkit-backdrop-filter 200ms ease;
 }
 
+/* Inner group fills the flex container without WP width constraints */
+.is-style-sticky-header > .wp-block-group > .wp-block-group {
+	flex: 1 1 auto;
+	width: 100%;
+	max-width: 100% !important;
+	margin: 0 !important;
+}
+
 .is-style-sticky-header .wp-block-site-logo {
 	flex: 0 0 auto;
 	opacity: 1;
@@ -57,6 +67,16 @@
 	transition: opacity 200ms ease, transform 200ms ease;
 }
 
+.is-style-sticky-header .wp-block-navigation {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.wp-block-navigation .wp-block-navigation-item__content {
+	font-size: inherit;
+}
 
 .is-style-sticky-header.is-top > header.wp-block-group,
 .is-style-sticky-header.is-top > .wp-block-group {
@@ -82,7 +102,6 @@
 
 .is-style-sticky-header.is-scrolled > header.wp-block-group,
 .is-style-sticky-header.is-scrolled > .wp-block-group {
-	
 	background-color: rgba(244, 244, 244, 0.4);
 	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 	-webkit-backdrop-filter: blur(8px);

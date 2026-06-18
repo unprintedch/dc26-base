@@ -2,23 +2,24 @@
    NAVIGATION (BLOCK) - BASE STYLES
    =================================== */
 
-.wp-block-navigation .wp-block-navigation__submenu-container {
+.wp-block-navigation .has-child > .wp-block-navigation__submenu-container {
     --dc26-nav-submenu-gap: 0.75rem;
     min-width: 220px;
     padding: 0.5rem 0;
     margin-top: var(--dc26-nav-submenu-gap);
-    opacity: 0 !important;
+    opacity: 0;
+    visibility: hidden;
     transform: translateY(6px);
-    transition: opacity 0.25s ease, transform 0.25s ease !important;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
     pointer-events: none;
-    /* Override WP core visibility:hidden / height:0 approach */
-    visibility: visible !important;
-    height: auto !important;
-    overflow: visible !important;
-    width: auto !important;
+    will-change: opacity, transform;
 }
 
-.wp-block-navigation .wp-block-navigation__submenu-container::before {
+.wp-block-navigation .has-child > .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+    white-space: nowrap;
+}
+
+.wp-block-navigation .has-child > .wp-block-navigation__submenu-container::before {
     content: "";
     position: absolute;
     top: calc(var(--dc26-nav-submenu-gap) * -1);
@@ -28,11 +29,13 @@
     background: transparent;
 }
 
-.wp-block-navigation .wp-block-navigation-item:hover > .wp-block-navigation__submenu-container,
-.wp-block-navigation .wp-block-navigation-item:focus-within > .wp-block-navigation__submenu-container {
-    opacity: 1 !important;
+.wp-block-navigation .has-child:hover > .wp-block-navigation__submenu-container,
+.wp-block-navigation .has-child:focus-within > .wp-block-navigation__submenu-container {
+    opacity: 1;
+    visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
 }
 
 /* Chevron rotation on submenu open */
