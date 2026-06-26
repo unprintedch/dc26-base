@@ -32,19 +32,6 @@ h2.gform_title {
   margin-bottom: 1.5rem;
 }
 
-#gform_fields_4 {
-  border: 2px solid var(--wp--preset--color--primary);
-  border-radius: 0.5rem;
-  padding: 1rem;
-}
-
-@media (min-width: 1024px) {
-  #gform_fields_4 .gfield:not(.ec-enabled) {
-    padding-left: 11rem;
-    padding-right: 11rem;
-  }
-}
-
 @media (min-width: 1024px) {
   .gform_footer {
     padding-left: 11rem;
@@ -54,6 +41,14 @@ h2.gform_title {
 
 .gform-theme--foundation .gform_footer {
   justify-content: center;
+}
+
+.gform-theme--foundation .gform_wrapper,
+.wp-block-gravityforms-form {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
 }
 
 .gform_wrapper a {
