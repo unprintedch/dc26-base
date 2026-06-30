@@ -1,0 +1,19 @@
+{
+  "name": "dc26/nav-drawer",
+  "title": "Nav Drawer",
+  "description": "Tiroir de navigation mobile avec contenu libre.",
+  "category": "dc26",
+  "icon": "align-pull-right",
+  "keywords": ["drawer", "navigation", "offcanvas"],
+  "script": "file:./view.js",
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
+  },
+  "supports": {
+    "anchor": true,
+    "customClassName": true,
+    "jsx": true
+  }
+}

@@ -42,6 +42,30 @@
 }
 
 /* ===================================
+   RESPONSIVE NAV — desktop/mobile visibility
+   =================================== */
+
+/* Nav desktop : cachée sous 1024px */
+.wp-block-navigation:has(.dc26-nav-desktop) {
+    display: none !important;
+}
+@media (min-width: 1024px) {
+    .wp-block-navigation:has(.dc26-nav-desktop) {
+        display: flex !important;
+    }
+}
+
+/* Trigger mobile : caché à partir de 1024px */
+.dc26-mobile-only {
+    display: flex;
+}
+@media (min-width: 1024px) {
+    .dc26-mobile-only {
+        display: none;
+    }
+}
+
+/* ===================================
    SCROLL ANIMATIONS - SEPARATED FOR SMOOTHNESS
    =================================== */
 /* WP Admin bar offset */

@@ -1,0 +1,18 @@
+{
+  "name": "dc26/nav",
+  "title": "Nav",
+  "description": "Navigation custom avec DOM sur mesure, lit un menu wp_navigation du Site Editor.",
+  "category": "dc26",
+  "icon": "list-view",
+  "keywords": ["navigation", "menu", "nav"],
+  "script": "file:./view.js",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
+  },
+  "supports": {
+    "anchor": true,
+    "customClassName": true
+  }
+}

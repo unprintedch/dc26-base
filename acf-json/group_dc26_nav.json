@@ -1,0 +1,64 @@
+{
+    "key": "group_dc26_nav",
+    "title": "BLOCK – Nav",
+    "fields": [
+        {
+            "key": "field_nav_menu",
+            "label": "Menu (wp_navigation)",
+            "name": "nav_menu",
+            "type": "post_object",
+            "post_type": ["wp_navigation"],
+            "return_format": "object",
+            "ui": 1,
+            "required": 1
+        },
+        {
+            "key": "field_nav_orientation",
+            "label": "Orientation",
+            "name": "nav_orientation",
+            "type": "select",
+            "choices": {
+                "vertical": "Verticale",
+                "horizontal": "Horizontale"
+            },
+            "default_value": "vertical",
+            "required": 0
+        },
+        {
+            "key": "field_nav_font_size",
+            "label": "Taille de police (slug preset)",
+            "name": "nav_font_size",
+            "type": "text",
+            "default_value": "medium",
+            "placeholder": "ex: small, medium, large, xl",
+            "required": 0
+        },
+        {
+            "key": "field_nav_submenu_trigger",
+            "label": "Ouverture des sous-menus",
+            "name": "nav_submenu_trigger",
+            "type": "select",
+            "choices": {
+                "click": "Au clic",
+                "hover": "Au survol"
+            },
+            "default_value": "click",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "dc26/nav"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "active": true,
+    "modified": 1751289600
+}

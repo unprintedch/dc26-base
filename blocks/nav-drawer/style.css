@@ -1,0 +1,94 @@
+.dc26-nav-drawer {
+    position: fixed;
+    top: 0;
+    width: min(var(--drawer-width, 420px), 100vw);
+    height: 100dvh;
+    background-color: var(--drawer-bg, #ffffff);
+    z-index: 9999;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 24px rgb(0 0 0 / 0.12);
+}
+
+.dc26-nav-drawer--right {
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dc26-nav-drawer--left {
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dc26-nav-drawer.is-open {
+    transform: translateX(0);
+}
+
+/* Overlay backdrop */
+.dc26-nav-drawer__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background-color: rgb(0 0 0 / 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.dc26-nav-drawer__overlay.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Close button */
+.dc26-nav-drawer__close {
+    position: absolute;
+    top: calc(1.25rem + var(--wp-admin--admin-bar--height, 0px));
+    right: 1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0;
+    z-index: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.dc26-nav-drawer__close:hover {
+    opacity: 1;
+}
+
+/* Content */
+.dc26-nav-drawer__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: calc(4rem + var(--wp-admin--admin-bar--height, 0px));
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    gap: 2rem;
+}
+
+/* Éditeur : drawer visible en flux normal */
+.block-editor-iframe__body .dc26-nav-drawer,
+.block-editor-page .dc26-nav-drawer {
+    position: relative;
+    transform: none;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    box-shadow: none;
+}

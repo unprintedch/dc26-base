@@ -1,0 +1,69 @@
+.dc26-nav {
+    --nav-font-size: var(--wp--preset--font-size--medium);
+}
+
+.dc26-nav__list,
+.dc26-nav__submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dc26-nav__link {
+    display: block;
+    font-size: var(--nav-font-size);
+    font-family: var(--wp--preset--font-family--heading, inherit);
+    text-decoration: none;
+    color: currentColor;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+
+/* Orientation */
+.dc26-nav--horizontal .dc26-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--wp--preset--spacing--40);
+}
+
+.dc26-nav--vertical .dc26-nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* Submenu */
+.dc26-nav__submenu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.dc26-nav__chevron {
+    display: inline-block;
+    width: 0.45em;
+    height: 0.45em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-0.1em);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-top: 0.1em;
+}
+
+.dc26-nav__item--has-children.is-open .dc26-nav__chevron {
+    transform: rotate(-135deg) translateY(0.1em);
+}
+
+.dc26-nav__submenu[hidden] {
+    display: none;
+}
+
+.dc26-nav__submenu {
+    padding-left: var(--wp--preset--spacing--40);
+}

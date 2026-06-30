@@ -1,0 +1,70 @@
+{
+    "key": "group_dc26_nav_drawer",
+    "title": "BLOCK – Nav Drawer",
+    "fields": [
+        {
+            "key": "field_nd_position",
+            "label": "Position",
+            "name": "nd_position",
+            "type": "select",
+            "choices": {
+                "right": "Droite",
+                "left": "Gauche"
+            },
+            "default_value": "right",
+            "required": 0
+        },
+        {
+            "key": "field_nd_width",
+            "label": "Largeur (px)",
+            "name": "nd_width",
+            "type": "number",
+            "default_value": 420,
+            "min": 280,
+            "max": 800,
+            "required": 0
+        },
+        {
+            "key": "field_nd_bg_color",
+            "label": "Couleur de fond (slug preset)",
+            "name": "nd_bg_color",
+            "type": "text",
+            "default_value": "white",
+            "placeholder": "ex: white, light, primary",
+            "required": 0
+        },
+        {
+            "key": "field_nd_show_overlay",
+            "label": "Overlay backdrop",
+            "name": "nd_show_overlay",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1,
+            "required": 0
+        },
+        {
+            "key": "field_nd_show_close_btn",
+            "label": "Bouton fermer",
+            "name": "nd_show_close_btn",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1,
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "dc26/nav-drawer"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "active": true,
+    "modified": 1751289600
+}

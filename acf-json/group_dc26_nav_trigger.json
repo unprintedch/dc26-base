@@ -1,0 +1,75 @@
+{
+    "key": "group_dc26_nav_trigger",
+    "title": "BLOCK – Nav Trigger",
+    "fields": [
+        {
+            "key": "field_nt_icon_type",
+            "label": "Type d’icône",
+            "name": "nt_icon_type",
+            "type": "select",
+            "choices": {
+                "lines": "Lignes (défaut)",
+                "custom": "Image custom"
+            },
+            "default_value": "lines",
+            "required": 0
+        },
+        {
+            "key": "field_nt_icon_image",
+            "label": "Image de l’icône",
+            "name": "nt_icon_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_nt_icon_type",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_nt_color_scheme",
+            "label": "Couleur",
+            "name": "nt_color_scheme",
+            "type": "select",
+            "choices": {
+                "dark": "Sombre",
+                "light": "Clair"
+            },
+            "default_value": "dark",
+            "required": 0
+        },
+        {
+            "key": "field_nt_position",
+            "label": "Position",
+            "name": "nt_position",
+            "type": "select",
+            "choices": {
+                "left": "Gauche",
+                "right": "Droite"
+            },
+            "default_value": "right",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "dc26/nav-trigger"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "active": true,
+    "modified": 1751289600
+}
