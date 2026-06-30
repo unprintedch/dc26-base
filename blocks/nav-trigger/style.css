@@ -35,6 +35,13 @@
     color: var(--wp--preset--color--white);
 }
 
+/* Visibilité responsive */
+@media (max-width: 1023px) {
+    .dc26-nav-trigger--hide-mobile {
+        display: none;
+    }
+}
+
 /* Open state */
 .dc26-nav-trigger__button[aria-expanded="true"] .dc26-nav-trigger__lines span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);

@@ -55,6 +55,15 @@
             },
             "default_value": "right",
             "required": 0
+        },
+        {
+            "key": "field_nt_hide_on_mobile",
+            "label": "Masquer sur mobile",
+            "name": "nt_hide_on_mobile",
+            "type": "true_false",
+            "default_value": 0,
+            "ui": 1,
+            "required": 0
         }
     ],
     "location": [
@@ -71,5 +80,5 @@
     "style": "default",
     "label_placement": "top",
     "active": true,
-    "modified": 1751289600
+    "modified": 1751293200
 }

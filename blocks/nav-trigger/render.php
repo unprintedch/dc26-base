@@ -16,13 +16,17 @@ if (!empty($block['className'])) {
     $class_name .= ' ' . $block['className'];
 }
 
-$icon_type    = get_field('nt_icon_type') ?: 'lines';
-$icon_image   = get_field('nt_icon_image');
-$color_scheme = get_field('nt_color_scheme') ?: 'dark';
-$position     = get_field('nt_position') ?: 'right';
+$icon_type      = get_field('nt_icon_type') ?: 'lines';
+$icon_image     = get_field('nt_icon_image');
+$color_scheme   = get_field('nt_color_scheme') ?: 'dark';
+$position       = get_field('nt_position') ?: 'right';
+$hide_on_mobile = get_field('nt_hide_on_mobile');
 
 $class_name .= ' dc26-nav-trigger--' . esc_attr($color_scheme);
 $class_name .= ' dc26-nav-trigger--' . esc_attr($position);
+if ($hide_on_mobile) {
+    $class_name .= ' dc26-nav-trigger--hide-mobile';
+}
 
 if ($is_preview) : ?>
     <div class="admin-view-only flex items-center justify-center bg-slate-100 p-6 gap-3">
