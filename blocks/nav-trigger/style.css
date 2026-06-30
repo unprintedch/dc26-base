@@ -36,7 +36,7 @@
 }
 
 /* Visibilité responsive */
-@media (max-width: 1023px) {
+@media (min-width: 1024px) {
     .dc26-nav-trigger--hide-mobile {
         display: none;
     }
