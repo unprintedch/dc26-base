@@ -1,0 +1,42 @@
+.wp-block-cover:has(.wp-block-cover__link) {
+	overflow: hidden;
+}
+
+.wp-block-cover__link {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	display: block;
+}
+
+.wp-block-cover:has(.wp-block-cover__link) .wp-block-cover__image-background {
+	transition: transform 400ms ease;
+}
+
+.wp-block-cover:has(.wp-block-cover__link):hover .wp-block-cover__image-background {
+	transform: scale(1.04);
+}
+
+.wp-block-cover:has(.wp-block-cover__link) .icon-container {
+	transition: color 300ms ease;
+}
+
+.wp-block-cover:has(.wp-block-cover__link):hover .icon-container {
+	color: var(--wp--preset--color--primary) !important;
+}
+
+.wp-block-cover:has(.wp-block-cover__link) .wp-block-heading {
+	transition: color 300ms ease;
+}
+
+.wp-block-cover:has(.wp-block-cover__link):hover .wp-block-heading {
+	color: var(--wp--preset--color--primary) !important;
+}
+
+.wp-block-cover:has(.wp-block-cover__link) .wp-block-cover__background {
+	transition: opacity 300ms ease;
+}
+
+.wp-block-cover:has(.wp-block-cover__link):hover .wp-block-cover__background {
+	opacity: 0.3 !important;
+}

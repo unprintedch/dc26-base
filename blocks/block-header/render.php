@@ -22,7 +22,6 @@ if (!empty($block['align'])) {
 }
 
 $post_id = get_the_ID();
-$is_admin = is_admin();
 
 // Récupérer le logo depuis les options ACF
 $logo_id = get_field('logo_white', 'option');
@@ -37,7 +36,7 @@ if ($logo_id) {
 
 ?>
 
-<?php if ($is_admin) : ?>
+<?php if ($is_preview) : ?>
     <div class="admin-view-only flex items-center justify-center bg-slate-200 p-12 hover:bg-slate-300 transition-all">
         <h3>Custom header</h3>
     </div>

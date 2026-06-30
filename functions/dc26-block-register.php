@@ -2,7 +2,6 @@
 // Register blocks from parent theme and child theme (if active)
 add_action( 'init', 'dc26_acf_blocks' );
 function dc26_acf_blocks(): void {
-    error_log( '[dc26] ACF active: ' . ( function_exists( 'acf_register_block_type' ) ? 'YES' : 'NO' ) );
     $template_dir     = get_template_directory();
     $stylesheet_dir   = get_stylesheet_directory();
     $template_uri     = get_template_directory_uri();
@@ -18,7 +17,6 @@ function dc26_acf_blocks(): void {
     $registered = array();
 
     foreach ( $sources as $blocks_dir => $theme_uri ) {
-        error_log( '[dc26] scanning: ' . $blocks_dir . ' — exists: ' . ( is_dir( $blocks_dir ) ? 'yes' : 'no' ) );
         if ( ! is_dir( $blocks_dir ) ) {
             continue;
         }
@@ -31,9 +29,7 @@ function dc26_acf_blocks(): void {
             $block_path      = $blocks_dir . $block;
             $block_json_path = $block_path . '/block.json';
 
-            error_log( '[dc26] block: ' . $block . ' — registered' );
             if ( ! is_dir( $block_path ) || ! file_exists( $block_json_path ) ) {
-                error_log( '[dc26] block: ' . $block . ' — SKIPPED (no dir or block.json)' );
                 continue;
             }
 
@@ -89,8 +85,7 @@ function dc26_acf_blocks(): void {
                 $args['script'] = "dc26-block-{$block}-script";
             }
 
-            $result = register_block_type( $block_path, $args );
-            error_log( '[dc26] register_block_type(' . $block . '): ' . ( $result ? $result->name : 'FAILED' ) );
+            register_block_type( $block_path, $args );
         }
     }
 }

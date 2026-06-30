@@ -43,11 +43,9 @@ h2.gform_title {
   justify-content: center;
 }
 
-.gform-theme--foundation .gform_wrapper,
-.wp-block-gravityforms-form {
+/* GF orbital theme injecte un border inline sur .gform_fields — on l'écrase */
+.gform_fields {
   border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
   padding: 0 !important;
 }
 

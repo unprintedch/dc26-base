@@ -1,8 +1,6 @@
 /* =========================================================
    Scroll Image — dc26-base
-   Crossfade entre image par défaut et image on-scroll.
-   Déclenché par .is-scrolled sur l'ancêtre sticky-header
-   ou sur le bloc lui-même (fallback via view.js).
+   Layout uniquement — animations gérées par GSAP (scroll-image.js).
    ========================================================= */
 
 .dc26-scroll-image__wrap {
@@ -21,23 +19,11 @@
     height: auto;
     max-height: var(--si-max-height, none);
     width: auto;
-    transition: opacity 0.35s ease;
 }
 
-/* État par défaut : image de base visible */
-.dc26-scroll-image__default  { opacity: 1; }
+/* État initial avant que GSAP prenne la main */
+.dc26-scroll-image__default   { opacity: 1; }
 .dc26-scroll-image__on-scroll { opacity: 0; }
-
-/* État scrollé : crossfade vers image on-scroll */
-.is-scrolled .dc26-scroll-image__default,
-.dc26-scroll-image.is-scrolled .dc26-scroll-image__default {
-    opacity: 0;
-}
-
-.is-scrolled .dc26-scroll-image__on-scroll,
-.dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
-    opacity: 1;
-}
 
 @media (max-width: 768px) {
     .dc26-scroll-image__default,

@@ -1,23 +1,19 @@
 {
-    "name": "dc26/header",
-    "title": "Header dc26",
-    "description": "header block",
-    "category": "formatting",
-    "icon": "format-image",
-    "keywords": [
-        "Hero",
-        "header",
-        "navigation",
-        "dc26"
-    ],
-    "acf": {
-        "mode" : "preview",
-        "renderTemplate": "block-header.php"
-    },
-    "supports": {
-        "align": true,
-        "anchor": true,
-        "customClassName": true,
-        "jsx": true
-    }
+  "name": "dc26/header",
+  "title": "Header dc26",
+  "description": "Header custom avec navigation, logo et offcanvas mobile",
+  "category": "dc26",
+  "icon": "admin-home",
+  "keywords": ["header", "navigation", "menu", "dc26"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
+  },
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "customClassName": true,
+    "jsx": true
+  }
 }

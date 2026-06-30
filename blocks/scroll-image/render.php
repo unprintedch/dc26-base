@@ -17,7 +17,7 @@ if (!empty($block['className'])) $class_name .= ' ' . $block['className'];
 $img_default  = get_field('image_default');
 $img_scroll   = get_field('image_scroll');
 $threshold    = (int) (get_field('scroll_threshold') ?: 64);
-$max_height   = (int) (get_field('max_height') ?: 0);
+$max_height   = (int) (get_field('max_height') ?: 50);
 $link_home    = (bool) get_field('link_home');
 
 if ($is_preview) {

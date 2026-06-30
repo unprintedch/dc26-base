@@ -173,21 +173,5 @@ function dc26_enqueue_accordion_tabs_variation(): void {
 }
 add_action('enqueue_block_editor_assets', 'dc26_enqueue_accordion_tabs_variation');
 
-/**
- * Enqueue accordion tabs behavior script (front).
- */
-function dc26_enqueue_accordion_tabs_front(): void {
-  $script_path = 'scripts/accordion-tabs-radio.js';
-
-  wp_enqueue_script(
-    'dc26-accordion-tabs-radio',
-    get_template_directory_uri() . '/' . $script_path,
-    array(),
-    dc26_get_asset_version($script_path),
-    true
-  );
-}
-add_action('wp_enqueue_scripts', 'dc26_enqueue_accordion_tabs_front', 20);
-
-// header-sticky.js est bundlé dans app.js — pas de chargement séparé nécessaire.
+// accordion-tabs-radio.js et header-sticky.js sont bundlés dans app.js.
 
