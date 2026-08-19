@@ -39,7 +39,6 @@ header.wp-block-template-part.is-style-sticky-header {
 	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	gap: 1rem;
 	background-color: transparent;
 	box-shadow: none;
@@ -68,7 +67,6 @@ header.wp-block-template-part.is-style-sticky-header {
 }
 
 .is-style-sticky-header .wp-block-navigation {
-	flex: 1 1 auto;
 	min-width: 0;
 	display: flex;
 	justify-content: flex-end;
@@ -84,6 +82,15 @@ header.wp-block-template-part.is-style-sticky-header {
 	box-shadow: none;
 	-webkit-backdrop-filter: none;
 	backdrop-filter: none;
+}
+
+/* Le header transparent est pensé pour chevaucher le hero (comme du temps du
+   position:fixed). En position:sticky il reste dans le flux — on retire donc
+   la hauteur du header avec une marge négative pour recréer le chevauchement,
+   uniquement là où un hero est attendu juste en dessous (home). */
+.home .is-style-sticky-header,
+.front-page .is-style-sticky-header {
+	margin-bottom: calc(-1 * var(--site-header-height, 0px));
 }
 
 /* Hide logo only on homepage while header is at top */
