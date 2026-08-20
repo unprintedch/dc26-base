@@ -14,6 +14,7 @@ $default_side = !empty($labels['default_side']) ? $labels['default_side'] : 'lef
 $remember_choice = !empty($labels['remember_choice']);
 $layout_variant = !empty($labels['layout_variant']) ? $labels['layout_variant'] : 'cards';
 $member_link = !empty($labels['member_link']) ? $labels['member_link'] : null;
+$member_subtitle = !empty($labels['member_subtitle']) ? $labels['member_subtitle'] : '';
 $custom_anchor = !empty($labels['anchor']) ? $labels['anchor'] : '';
 
 $left_items = get_field('left_items') ?: array();
@@ -86,6 +87,9 @@ $storage_key = 'dc26-toggle-panel-' . $block_id;
                 <a href="<?php echo esc_url($member_link_url); ?>" target="<?php echo esc_attr($member_link_target); ?>">
                     <?php echo esc_html($member_link_title); ?>
                 </a>
+                <?php if ($member_subtitle) : ?>
+                    <p class="dc26-toggle-panel__member-subtitle"><?php echo esc_html($member_subtitle); ?></p>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
     </div>
