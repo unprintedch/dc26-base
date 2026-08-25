@@ -9,6 +9,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* <button> n'hérite pas de `color` par défaut (UA stylesheet) — sans ça,
+       le --light color scheme est écrasé par le noir natif du navigateur. */
+    color: inherit;
 }
 
 .dc26-nav-trigger__lines {
