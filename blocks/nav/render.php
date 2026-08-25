@@ -11,6 +11,11 @@ $class_name = 'dc26-nav';
 if (!empty($block['className'])) $class_name .= ' ' . $block['className'];
 
 $nav_post        = get_field('nav_menu');
+if ($nav_post && !($nav_post instanceof WP_Post)) {
+    // WPML renvoie parfois l'ID brut au lieu de l'objet quand le menu n'a pas
+    // de traduction pour la langue courante.
+    $nav_post = get_post($nav_post);
+}
 $orientation     = get_field('nav_orientation') ?: 'vertical';
 $font_size       = get_field('nav_font_size') ?: 'medium';
 $submenu_trigger = get_field('nav_submenu_trigger') ?: 'click';
