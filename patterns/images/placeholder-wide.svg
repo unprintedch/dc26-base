@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Image de remplacement">
+	<rect width="1600" height="900" fill="#f4f4f4"/>
+	<g fill="none" stroke="#98A0B4" stroke-width="2">
+		<rect x="60" y="60" width="1480" height="780"/>
+		<path d="M60 780 L560 380 L860 620 L1120 300 L1540 700"/>
+		<circle cx="1260" cy="220" r="70"/>
+	</g>
+	<text x="50%" y="94%" font-family="system-ui, -apple-system, sans-serif" font-size="34" fill="#808080" text-anchor="middle">Image à remplacer</text>
+</svg>
