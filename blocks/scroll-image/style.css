@@ -18,8 +18,10 @@
     grid-area: 1 / 1;
     display: block;
     max-width: 100%;
-    height: auto;
-    max-height: var(--si-max-height, none);
+    /* !important nécessaire : WooCommerce force `.woocommerce img { height: auto }`
+       (plus spécifique que .dc26-scroll-image__default seul) sur toutes les pages
+       shop/produit — sans ça un SVG sans dimensions intrinsèques s'effondre à 0×0. */
+    height: var(--si-max-height, 40px) !important;
     width: auto;
     transition: opacity 200ms ease;
 }
@@ -43,6 +45,6 @@
 @media (max-width: 768px) {
     .dc26-scroll-image__default,
     .dc26-scroll-image__on-scroll {
-        max-height: 50px !important;
+        height: 50px !important;
     }
 }
