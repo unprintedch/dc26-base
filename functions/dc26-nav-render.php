@@ -5,6 +5,30 @@ declare(strict_types=1);
  * Helpers partagés pour le rendu des blocs dc26/nav et dc26/nav-drawer.
  */
 
+/**
+ * A navigation-link block edited via the block bindings API (Pattern Overrides /
+ * "connect to page") keeps its `url` attribute frozen at whatever it was when the
+ * link was last saved in the editor — WP only re-resolves the binding there, not
+ * when the block is parsed and hand-rendered outside core's own render pipeline
+ * (as dc26/nav does for the off-canvas drawer). If the linked page's slug changes
+ * afterwards (e.g. moved under a parent), this stale url 404s here while the
+ * desktop header — rendered through core's Navigation block — stays correct.
+ * Re-resolve from the bound post's live permalink instead of trusting the attribute.
+ */
+function dc26_nav_resolve_link_url(array $attrs): string {
+    $bound_field = $attrs['metadata']['bindings']['url']['args']['field'] ?? null;
+    $post_id     = $attrs['id'] ?? null;
+
+    if ($bound_field === 'link' && $post_id) {
+        $permalink = get_permalink((int) $post_id);
+        if ($permalink) {
+            return $permalink;
+        }
+    }
+
+    return $attrs['url'] ?? '';
+}
+
 function dc26_nav_parse_blocks(array $blocks): array {
     $items = [];
     foreach ($blocks as $block) {
@@ -14,7 +38,7 @@ function dc26_nav_parse_blocks(array $blocks): array {
         $attrs  = $block['attrs'] ?? [];
         $item   = [
             'label'    => $attrs['label'] ?? '',
-            'url'      => $attrs['url'] ?? '',
+            'url'      => dc26_nav_resolve_link_url($attrs),
             'target'   => !empty($attrs['opensInNewTab']) ? '_blank' : '',
             'children' => [],
         ];
