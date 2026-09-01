@@ -78,6 +78,7 @@
     position: relative;
     order: 1;
     padding: 0;
+    padding-left: 0.75rem;
     padding-right: 2.5rem;
     border: 0;
     border-radius: var(--facet-radius-pill);
