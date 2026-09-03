@@ -19,6 +19,7 @@ add_action( 'after_setup_theme', function (): void {
 require_once get_template_directory() . '/functions/dc26-enqueue.php';
 require_once get_template_directory() . '/functions/dc26-fonts.php';
 require_once get_template_directory() . '/functions/dc26-block-register.php';
+require_once get_template_directory() . '/functions/dc26-button-icons.php';
 require_once get_template_directory() . '/functions/dc26-menu-walker.php';
 require_once get_template_directory() . '/functions/dc26-woocommerce.php';
 require_once get_template_directory() . '/functions/dc26-facet.php';
