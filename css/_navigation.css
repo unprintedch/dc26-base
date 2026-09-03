@@ -2,11 +2,21 @@
    NAVIGATION (BLOCK) - BASE STYLES
    =================================== */
 
+/* margin-top (au lieu de padding-top) créait une bande de ~0.75rem entre le
+   lien et le panneau qui n'appartient à aucun des deux éléments : au
+   passage de la souris dans cette zone, le pointer quitte la <li> (core
+   Navigation ferme le sous-menu via pointerleave, Interactivity API —
+   data-wp-on--pointerleave="actions.closeMenuOnHover" sur la <li>) avant
+   d'atteindre le panneau, qui se referme donc avant que le curseur y
+   arrive. Le ::before transparent censé combler ce vide ne peut pas aider
+   : il hérite pointer-events:none du panneau tant que celui-ci est fermé,
+   donc le survol de cette zone ne "touche" aucun élément réel de la <li>.
+   Fix : padding-top au lieu de margin-top — l'espace fait alors partie de
+   la boîte du panneau (donc du survol), pas hoveré à côté. */
 .wp-block-navigation .has-child > .wp-block-navigation__submenu-container {
     --dc26-nav-submenu-gap: 0.75rem;
     min-width: 220px;
-    padding: 0.5rem 0;
-    margin-top: var(--dc26-nav-submenu-gap);
+    padding: calc(0.5rem + var(--dc26-nav-submenu-gap)) 0 0.5rem;
     opacity: 0;
     visibility: hidden;
     transform: translateY(6px);
@@ -17,16 +27,6 @@
 
 .wp-block-navigation .has-child > .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
     white-space: nowrap;
-}
-
-.wp-block-navigation .has-child > .wp-block-navigation__submenu-container::before {
-    content: "";
-    position: absolute;
-    top: calc(var(--dc26-nav-submenu-gap) * -1);
-    left: 0;
-    right: 0;
-    height: var(--dc26-nav-submenu-gap);
-    background: transparent;
 }
 
 .wp-block-navigation .has-child:hover > .wp-block-navigation__submenu-container,
