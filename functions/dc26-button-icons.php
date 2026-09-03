@@ -10,19 +10,19 @@ add_action('init', function (): void {
     $styles = array(
         array(
             'name'  => 'dc26-icon-mail',
-            'label' => __('Icône : mail', 'dc26-base'),
+            'label' => __('Mail', 'dc26-base'),
         ),
         array(
             'name'  => 'dc26-icon-tel',
-            'label' => __('Icône : téléphone', 'dc26-base'),
+            'label' => __('Téléphone', 'dc26-base'),
         ),
         array(
             'name'  => 'dc26-icon-pin',
-            'label' => __('Icône : localisation', 'dc26-base'),
+            'label' => __('Localisation', 'dc26-base'),
         ),
         array(
             'name'  => 'dc26-icon-arrow',
-            'label' => __('Icône : flèche', 'dc26-base'),
+            'label' => __('Flèche', 'dc26-base'),
         ),
     );
 
