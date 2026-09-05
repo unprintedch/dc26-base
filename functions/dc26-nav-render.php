@@ -56,14 +56,27 @@ function dc26_nav_render_items(array $items): void {
         ?>
         <li class="dc26-nav__item<?php echo $has_children ? ' dc26-nav__item--has-children' : ''; ?>">
             <?php if ($has_children) : ?>
-                <button
-                    class="dc26-nav__link dc26-nav__submenu-toggle"
-                    type="button"
-                    aria-expanded="false"
-                >
-                    <?php echo esc_html($item['label']); ?>
-                    <span class="dc26-nav__chevron" aria-hidden="true"></span>
-                </button>
+                <div class="dc26-nav__item-row">
+                    <?php if ($item['url']) : ?>
+                        <a
+                            class="dc26-nav__link"
+                            href="<?php echo esc_url($item['url']); ?>"
+                            <?php if ($item['target']) : ?>target="<?php echo esc_attr($item['target']); ?>" rel="noopener noreferrer"<?php endif; ?>
+                        >
+                            <?php echo esc_html($item['label']); ?>
+                        </a>
+                    <?php else : ?>
+                        <span class="dc26-nav__link dc26-nav__link--static"><?php echo esc_html($item['label']); ?></span>
+                    <?php endif; ?>
+                    <button
+                        class="dc26-nav__submenu-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-label="<?php echo esc_attr(sprintf(__('Sous-menu %s', 'dc26-base'), $item['label'])); ?>"
+                    >
+                        <span class="dc26-nav__chevron" aria-hidden="true"></span>
+                    </button>
+                </div>
                 <ul class="dc26-nav__submenu" hidden>
                     <?php dc26_nav_render_items($item['children']); ?>
                 </ul>

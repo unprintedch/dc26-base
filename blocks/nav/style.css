@@ -37,11 +37,35 @@
     gap: 0.5em;
 }
 
-/* Submenu */
-.dc26-nav__submenu-toggle {
+/* Submenu — la ligne label + chevron est un conteneur flex séparé du <ul>
+   pour que le lien de titre (dc26-nav__link) et le bouton de bascule
+   (dc26-nav__submenu-toggle) restent deux cibles tactiles distinctes : le
+   label navigue vers l'URL du parent, le chevron ouvre/ferme uniquement. */
+.dc26-nav__item-row {
     display: flex;
     align-items: center;
     gap: 0.5em;
+}
+
+.dc26-nav__item-row .dc26-nav__link {
+    width: auto;
+    flex: 1;
+}
+
+.dc26-nav__submenu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: currentColor;
+    cursor: pointer;
+    line-height: 0;
+    /* padding pour une zone tactile confortable sans agrandir le chevron
+       visuellement — margin négatif pour ne pas pousser le layout. */
+    padding: 0.6em;
+    margin: -0.6em;
 }
 
 .dc26-nav__chevron {
