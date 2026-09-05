@@ -59,13 +59,18 @@
     flex-shrink: 0;
     background: none;
     border: none;
+    /* Séparateur visible entre le titre et le chevron, pour que la
+       frontière entre les deux zones tactiles soit visible et pas
+       seulement fonctionnelle. */
+    border-left: 1px solid color-mix(in srgb, currentColor 25%, transparent);
     color: currentColor;
     cursor: pointer;
     line-height: 0;
-    /* padding pour une zone tactile confortable sans agrandir le chevron
-       visuellement — margin négatif pour ne pas pousser le layout. */
-    padding: 0.6em;
-    margin: -0.6em;
+    /* padding-left avant la bordure (espace entre titre et séparateur) +
+       zone tactile confortable tout autour — marge négative en haut/bas/
+       droite seulement, pour ne pas décaler visuellement la bordure. */
+    padding: 0.6em 0.6em 0.6em 0.75em;
+    margin: -0.6em -0.6em -0.6em 0;
 }
 
 .dc26-nav__chevron {
