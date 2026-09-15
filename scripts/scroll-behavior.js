@@ -37,9 +37,10 @@ const defaultOptions = {
   throttleDelay: 16, // ~60fps avec requestAnimationFrame
   respectsReducedMotion: true,
 
-  // Parallax background layer
-  parallaxSelector: '#bg-pattern-layer',
-  parallaxFactor: 0.2, // 0.2 = 20% de la vitesse de défilement
+  // Parallax background layer(s) — une instance par élément trouvé, chacun
+  // peut surcharger sa propre vitesse via data-factor (voir ParallaxLayer)
+  parallaxSelector: '.dc26-parallax-layer',
+  parallaxFactor: 0.2, // 0.2 = 20% de la vitesse de défilement (valeur par défaut si pas de data-factor)
 };
 
 /**
@@ -315,8 +316,8 @@ class ScrollAnimations {
  * Parallax controller pour un calque de fond
  */
 class ParallaxLayer {
-  constructor(selector, options) {
-    this.el = document.querySelector(selector);
+  constructor(el, options) {
+    this.el = typeof el === 'string' ? document.querySelector(el) : el;
     this.factor = options.parallaxFactor;
     if (this.el && this.el.dataset.factor) {
       const parsed = parseFloat(this.el.dataset.factor);
@@ -430,7 +431,7 @@ export default function scrollBehavior(options = {}) {
   const instances = {
     header: null,
     animations: null,
-    parallax: null,
+    parallax: [],
   };
   
   // Attendre que le DOM soit prêt
@@ -457,11 +458,10 @@ export default function scrollBehavior(options = {}) {
       config
     );
 
-    // Parallax background layer
-    instances.parallax = new ParallaxLayer(
-      config.parallaxSelector,
-      config
-    );
+    // Parallax background layer(s) — une instance indépendante par élément
+    instances.parallax = Array.from(
+      document.querySelectorAll(config.parallaxSelector)
+    ).map((el) => new ParallaxLayer(el, config));
   }
   
   // Retourner l'API publique
@@ -472,7 +472,7 @@ export default function scrollBehavior(options = {}) {
     destroy() {
       if (instances.header) instances.header.destroy();
       if (instances.animations) instances.animations.destroy();
-      if (instances.parallax) instances.parallax.destroy();
+      instances.parallax.forEach((p) => p.destroy());
     },
     
     /**
