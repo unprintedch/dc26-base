@@ -41,6 +41,7 @@ const defaultOptions = {
   // peut surcharger sa propre vitesse via data-factor (voir ParallaxLayer)
   parallaxSelector: '.dc26-parallax-layer',
   parallaxFactor: 0.2, // 0.2 = 20% de la vitesse de défilement (valeur par défaut si pas de data-factor)
+  parallaxSmoothing: 0.08, // 0-1, plus petit = rattrapage plus lent/doux après l'arrêt du scroll (valeur par défaut si pas de data-smoothing)
 };
 
 /**
@@ -323,17 +324,24 @@ class ParallaxLayer {
       const parsed = parseFloat(this.el.dataset.factor);
       if (!Number.isNaN(parsed)) this.factor = parsed;
     }
+    this.smoothing = options.parallaxSmoothing;
+    if (this.el && this.el.dataset.smoothing) {
+      const parsedSmoothing = parseFloat(this.el.dataset.smoothing);
+      if (!Number.isNaN(parsedSmoothing)) this.smoothing = parsedSmoothing;
+    }
     this.enabled = !!this.el && !(
       options.respectsReducedMotion && prefersReducedMotion()
     );
     this.ticking = false;
     this.lastY = 0;
+    this.currentTranslate = 0;
+    this.targetTranslate = 0;
 
     if (!this.enabled) return;
 
     // Liaison
     this.onScroll = this.onScroll.bind(this);
-    this.update = this.update.bind(this);
+    this.loop = this.loop.bind(this);
     this.updateHeight = this.updateHeight.bind(this);
 
     // Mettre à jour la hauteur pour couvrir tout le document
@@ -383,16 +391,31 @@ class ParallaxLayer {
 
   onScroll() {
     this.lastY = window.scrollY || window.pageYOffset;
+    this.targetTranslate = this.lastY * this.factor;
     if (!this.ticking) {
       this.ticking = true;
-      requestAnimationFrame(this.update);
+      requestAnimationFrame(this.loop);
     }
   }
 
-  update() {
-    const translateY = Math.round(this.lastY * this.factor);
-    this.el.style.transform = `translate(-50%, ${-translateY}px)`;
-    this.ticking = false;
+  /**
+   * Rattrape currentTranslate vers targetTranslate par petites touches
+   * (lerp) à chaque frame — donne un mouvement qui continue à glisser
+   * quelques instants après l'arrêt du scroll au lieu de s'arrêter net,
+   * puis coupe la boucle une fois la position rattrapée (pas de rAF
+   * permanent au repos).
+   */
+  loop() {
+    const diff = this.targetTranslate - this.currentTranslate;
+    if (Math.abs(diff) > 0.05) {
+      this.currentTranslate += diff * this.smoothing;
+      this.el.style.transform = `translate(-50%, ${-Math.round(this.currentTranslate)}px)`;
+      requestAnimationFrame(this.loop);
+    } else {
+      this.currentTranslate = this.targetTranslate;
+      this.el.style.transform = `translate(-50%, ${-Math.round(this.currentTranslate)}px)`;
+      this.ticking = false;
+    }
   }
 
   destroy() {
