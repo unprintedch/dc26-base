@@ -318,6 +318,10 @@ class ParallaxLayer {
   constructor(selector, options) {
     this.el = document.querySelector(selector);
     this.factor = options.parallaxFactor;
+    if (this.el && this.el.dataset.factor) {
+      const parsed = parseFloat(this.el.dataset.factor);
+      if (!Number.isNaN(parsed)) this.factor = parsed;
+    }
     this.enabled = !!this.el && !(
       options.respectsReducedMotion && prefersReducedMotion()
     );
