@@ -46,3 +46,35 @@
 .wp-block-navigation-submenu__toggle[aria-expanded="true"] svg {
     transform: rotate(180deg);
 }
+
+/* ── Nav links as filled pill buttons (style variations dc26-nav-button-primary/secondary) ──
+   Appliquées via register_block_style('core/navigation-link', ...) — sélectionnables
+   dans le panneau Styles du bloc, aucune classe tapée à la main.
+   Deux sélecteurs par règle : .wp-block-navigation-item pour le rendu desktop
+   (core wp:navigation) et .dc26-nav__item pour le drawer mobile (dc26/nav,
+   rendu à la main par dc26_nav_render_items() — même className propagée). */
+.wp-block-navigation-item.is-style-dc26-nav-button-primary > .wp-block-navigation-item__content,
+.dc26-nav__item.is-style-dc26-nav-button-primary > .dc26-nav__link {
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--white);
+    border-radius: 999px;
+    padding: 0.5em 1.25em;
+}
+.wp-block-navigation-item.is-style-dc26-nav-button-primary > .wp-block-navigation-item__content:hover,
+.dc26-nav__item.is-style-dc26-nav-button-primary > .dc26-nav__link:hover {
+    background-color: var(--wp--preset--color--primary-hover);
+    color: var(--wp--preset--color--white);
+}
+
+.wp-block-navigation-item.is-style-dc26-nav-button-secondary > .wp-block-navigation-item__content,
+.dc26-nav__item.is-style-dc26-nav-button-secondary > .dc26-nav__link {
+    background-color: var(--wp--preset--color--secondary);
+    color: var(--wp--preset--color--white);
+    border-radius: 999px;
+    padding: 0.5em 1.25em;
+}
+.wp-block-navigation-item.is-style-dc26-nav-button-secondary > .wp-block-navigation-item__content:hover,
+.dc26-nav__item.is-style-dc26-nav-button-secondary > .dc26-nav__link:hover {
+    background-color: var(--wp--preset--color--secondary-hover);
+    color: var(--wp--preset--color--white);
+}

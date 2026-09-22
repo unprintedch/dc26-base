@@ -29,18 +29,38 @@ function dc26_nav_resolve_link_url(array $attrs): string {
     return $attrs['url'] ?? '';
 }
 
+/**
+ * Blocks other than navigation-link/-submenu (e.g. the WPML "Language Switcher"
+ * block editors nest inside the Navigation block) are dynamic blocks with their
+ * own render_callback — they don't need dc26_nav_parse_blocks' custom attribute
+ * mapping, just render_block() to get their normal front-end markup.
+ */
+const DC26_NAV_RAW_BLOCKS = ['wpml/navigation-language-switcher'];
+
 function dc26_nav_parse_blocks(array $blocks): array {
     $items = [];
     foreach ($blocks as $block) {
+        if (in_array($block['blockName'], DC26_NAV_RAW_BLOCKS, true)) {
+            $items[] = [
+                'type' => 'raw',
+                'html' => render_block($block),
+            ];
+            continue;
+        }
         if (!in_array($block['blockName'], ['core/navigation-link', 'core/navigation-submenu'], true)) {
             continue;
         }
         $attrs  = $block['attrs'] ?? [];
         $item   = [
-            'label'    => $attrs['label'] ?? '',
-            'url'      => dc26_nav_resolve_link_url($attrs),
-            'target'   => !empty($attrs['opensInNewTab']) ? '_blank' : '',
-            'children' => [],
+            'type'      => 'link',
+            'label'     => $attrs['label'] ?? '',
+            'url'       => dc26_nav_resolve_link_url($attrs),
+            'target'    => !empty($attrs['opensInNewTab']) ? '_blank' : '',
+            // Propage la className (ex. is-style-dc26-nav-button-primary) pour que
+            // le drawer mobile (rendu à la main, hors pipeline core) reste visuellement
+            // aligné avec le desktop (rendu par core wp:navigation, qui l'applique déjà).
+            'className' => $attrs['className'] ?? '',
+            'children'  => [],
         ];
         if ($block['blockName'] === 'core/navigation-submenu' && !empty($block['innerBlocks'])) {
             $item['children'] = dc26_nav_parse_blocks($block['innerBlocks']);
@@ -52,9 +72,20 @@ function dc26_nav_parse_blocks(array $blocks): array {
 
 function dc26_nav_render_items(array $items): void {
     foreach ($items as $item) {
+        if (($item['type'] ?? 'link') === 'raw') {
+            echo '<li class="dc26-nav__item dc26-nav__item--raw">' . $item['html'] . '</li>';
+            continue;
+        }
         $has_children = !empty($item['children']);
+        $item_class   = 'dc26-nav__item';
+        if ($has_children) {
+            $item_class .= ' dc26-nav__item--has-children';
+        }
+        if (!empty($item['className'])) {
+            $item_class .= ' ' . $item['className'];
+        }
         ?>
-        <li class="dc26-nav__item<?php echo $has_children ? ' dc26-nav__item--has-children' : ''; ?>">
+        <li class="<?php echo esc_attr($item_class); ?>">
             <?php if ($has_children) : ?>
                 <div class="dc26-nav__item-row">
                     <?php if ($item['url']) : ?>

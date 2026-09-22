@@ -132,6 +132,22 @@ add_action( 'init', function () {
 	);
 
 	register_block_style(
+		'core/navigation-link',
+		[
+			'name'  => 'dc26-nav-button-primary',
+			'label' => __( 'Bouton primaire', 'dc26-base' ),
+		]
+	);
+
+	register_block_style(
+		'core/navigation-link',
+		[
+			'name'  => 'dc26-nav-button-secondary',
+			'label' => __( 'Bouton secondaire', 'dc26-base' ),
+		]
+	);
+
+	register_block_style(
 		'core/page-list',
 		[
 			'name'  => 'dc26-page-grid-buttons',
