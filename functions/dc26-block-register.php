@@ -148,6 +148,14 @@ add_action( 'init', function () {
 	);
 
 	register_block_style(
+		'core/navigation-link',
+		[
+			'name'  => 'dc26-nav-icon-account',
+			'label' => __( 'Icône compte', 'dc26-base' ),
+		]
+	);
+
+	register_block_style(
 		'core/page-list',
 		[
 			'name'  => 'dc26-page-grid-buttons',
