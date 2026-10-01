@@ -34,19 +34,21 @@ header.wp-block-template-part.is-style-sticky-header {
 	margin-block-start: 0;
 }
 
-/* ── Barre flottante blanche, coins arrondis en bas, pas pleine largeur ──
-   Actif en permanence (plus de variante transparente au top) : plus simple,
-   même rendu avant/après scroll. */
 .is-style-sticky-header > header.wp-block-group,
 .is-style-sticky-header > .wp-block-group {
-	width: min(100% - 2rem, var(--wp--style--global--wide-size, 1360px));
-	margin-inline: auto;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	background-color: var(--wp--preset--color--white);
-	border-radius: 0 0 20px 20px;
-	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+	background-color: transparent;
+	box-shadow: none;
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+	transition:
+		background-color 200ms ease,
+		box-shadow 200ms ease,
+		backdrop-filter 200ms ease,
+		-webkit-backdrop-filter 200ms ease;
 }
 
 /* Inner group fills the flex container without WP width constraints */
@@ -59,6 +61,9 @@ header.wp-block-template-part.is-style-sticky-header {
 
 .is-style-sticky-header .wp-block-site-logo {
 	flex: 0 0 auto;
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 200ms ease, transform 200ms ease;
 }
 
 .is-style-sticky-header .wp-block-navigation {
@@ -69,4 +74,51 @@ header.wp-block-template-part.is-style-sticky-header {
 
 .wp-block-navigation .wp-block-navigation-item__content {
 	font-size: inherit;
+}
+
+.is-style-sticky-header.is-top > header.wp-block-group,
+.is-style-sticky-header.is-top > .wp-block-group {
+	background-color: rgba(255, 255, 255, 0);
+	box-shadow: none;
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+/* Le header transparent est pensé pour chevaucher le hero (comme du temps du
+   position:fixed). En position:sticky il reste dans le flux — on retire donc
+   la hauteur du header avec une marge négative pour recréer le chevauchement,
+   uniquement là où un hero est attendu juste en dessous (home). */
+.home .is-style-sticky-header,
+.front-page .is-style-sticky-header {
+	margin-bottom: calc(-1 * var(--site-header-height, 0px));
+}
+
+/* Hide logo only on homepage while header is at top */
+.home .is-style-sticky-header.is-top .wp-block-site-logo,
+.front-page .is-style-sticky-header.is-top .wp-block-site-logo {
+	opacity: 0;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+.is-style-sticky-header.is-scrolled .wp-block-site-logo {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+.is-style-sticky-header.is-scrolled > header.wp-block-group,
+.is-style-sticky-header.is-scrolled > .wp-block-group {
+	background-color: rgba(244, 244, 244, 0.4);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.is-style-sticky-header > header.wp-block-group,
+	.is-style-sticky-header > .wp-block-group,
+	.is-style-sticky-header .wp-block-site-logo {
+		transition: none;
+	}
 }

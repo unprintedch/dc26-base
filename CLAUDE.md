@@ -50,3 +50,16 @@ npm run build     # Production build
 - `dc26-ghost-arrow` — button blocks
 - `dc26-ghost-download` — button blocks
 - `dc26-buttons-doc-list` — buttons group
+
+## Règles de compatibilité (base partagée par tous les sites)
+
+`dc26-base` est le thème parent de **tous** les sites dc26-*. Ce qui change ici change partout au prochain déploiement. La base apporte de nouvelles possibilités **sans modifier ce que les sites utilisent déjà**.
+
+1. **Additif par défaut.** Nouveau rendu / nouveau comportement = nouvelle variation **opt-in** (style de bloc, classe `is-…` ajoutée explicitement, nouveau template-part comme `header-light.html`, nouveau pattern, nouveau bloc). Un site qui ne l'active pas ne voit aucune différence.
+2. **Ne jamais changer un défaut existant** : rendu d'un template-part / template, valeurs de `theme.json`, CSS d'un bloc existant, markup d'un `render.php`, noms de classes ou de presets. Corriger un vrai bug reste permis, mais sans changer l'apparence voulue.
+3. **Breaking change inévitable** → l'annoncer (commit `BREAKING:` + note dans `STATUS.md`), le faire derrière une nouvelle version majeure, et migrer les sites un par un.
+4. **Les enfants se personnalisent par les points d'extension prévus** : presets `theme.json`, surcharge de template-parts, classes documentées. Ils ne dépendent pas des détails internes de la base.
+5. **Déploiement figé par site.** Un site ne reçoit pas la base depuis le dossier de travail mais depuis un tag git (ex. `ejma-prod`, voir `themes/dc26-ejma/deploy.sh --base`). Changer de version de base pour un site est un acte volontaire, vérifié d'abord (staging, captures).
+6. **Avant tout changement de la base** : se demander « un site existant va-t-il changer d'aspect sans l'avoir demandé ? ». Si oui → en faire une variation opt-in.
+
+Exemple : le header flottant blanc (`css/_header-floating.css`) n'est actif que si le template-part porte `is-header-floating` ; le header par défaut (transparent au top, pilule floutée au scroll) est inchangé.

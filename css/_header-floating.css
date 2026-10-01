@@ -1,0 +1,43 @@
+/* ===================================
+  HEADER FLOTTANT — variation opt-in
+  ===================================
+  Barre blanche flottante, coins arrondis en bas, non pleine largeur, identique
+  avant/après scroll. Activée UNIQUEMENT si le template-part header porte la
+  classe `is-header-floating` (en plus de `is-style-sticky-header`), par ex.
+  dans templates/*.html :
+    <!-- wp:template-part {"slug":"header","className":"is-style-sticky-header is-header-floating"} /-->
+  Le rendu par défaut (transparent au top, pilule floutée au scroll) reste
+  inchangé pour les sites existants — voir CLAUDE.md "Règles de compatibilité". */
+
+.is-style-sticky-header.is-header-floating > header.wp-block-group,
+.is-style-sticky-header.is-header-floating > .wp-block-group {
+	width: min(100% - 2rem, var(--wp--style--global--wide-size, 1360px));
+	margin-inline: auto;
+	background-color: var(--wp--preset--color--white);
+	border-radius: 0 0 20px 20px;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+/* Pas de variante transparente : on neutralise les états top/scroll. */
+.is-style-sticky-header.is-header-floating.is-top > header.wp-block-group,
+.is-style-sticky-header.is-header-floating.is-top > .wp-block-group,
+.is-style-sticky-header.is-header-floating.is-scrolled > header.wp-block-group,
+.is-style-sticky-header.is-header-floating.is-scrolled > .wp-block-group {
+	background-color: var(--wp--preset--color--white);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+/* Pas de chevauchement du hero ni de logo masqué au top. */
+.home .is-style-sticky-header.is-header-floating,
+.front-page .is-style-sticky-header.is-header-floating {
+	margin-bottom: 0;
+}
+
+.home .is-style-sticky-header.is-header-floating.is-top .wp-block-site-logo,
+.front-page .is-style-sticky-header.is-header-floating.is-top .wp-block-site-logo {
+	opacity: 1;
+}
