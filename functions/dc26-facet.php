@@ -17,7 +17,12 @@ add_filter('facetwp_facet_sort_options', function (array $options, array $params
     return $options;
 }, 10, 2);
 
-add_filter('facetwp_index_row', function (array $params, $class): array {
+add_filter('facetwp_index_row', function ($params, $class) {
+    // FacetWP passe false quand une ligne est déjà ignorée par un autre filtre.
+    if (!is_array($params)) {
+        return $params;
+    }
+
     $facet_name = (string) ($params['facet_name'] ?? '');
     $facet_source = (string) ($params['facet_source'] ?? '');
 
