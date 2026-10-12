@@ -79,6 +79,19 @@
     color: var(--wp--preset--color--white);
 }
 
+/* Drawer mobile (nav verticale) : les boutons à fond s'ajustent à leur texte
+   au lieu de s'étirer sur toute la largeur du tiroir (le lien est en width:100%
+   et la liste flex-column étire ses items). */
+.dc26-nav--vertical .dc26-nav__item.is-style-dc26-nav-button-primary,
+.dc26-nav--vertical .dc26-nav__item.is-style-dc26-nav-button-secondary {
+    align-self: flex-start;
+    max-width: 100%;
+}
+.dc26-nav--vertical .dc26-nav__item.is-style-dc26-nav-button-primary > .dc26-nav__link,
+.dc26-nav--vertical .dc26-nav__item.is-style-dc26-nav-button-secondary > .dc26-nav__link {
+    width: auto;
+}
+
 /* ── Nav link with icon, no background (dc26-nav-icon-account) — ex. "Mon compte" ──
    Même technique mask-image que les styles d'icône core/button
    (css/_button-icons.css : dc26-icon-mail/tel/pin/arrow), appliquée au
