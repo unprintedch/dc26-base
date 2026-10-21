@@ -38,6 +38,21 @@
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
 }
 
+/* Overlay mobile : pas de survol, les sous-menus doivent rester visibles
+   (sinon ils héritent du opacity:0 / visibility:hidden ci-dessus). */
+.wp-block-navigation__responsive-container.is-menu-open .has-child > .wp-block-navigation__submenu-container {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    min-width: 0;
+    padding: 0.5rem 0;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .has-child > .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+    white-space: normal;
+}
+
 /* Chevron rotation on submenu open */
 .wp-block-navigation__submenu-icon svg {
     transition: transform 0.2s ease;
