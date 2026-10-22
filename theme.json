@@ -99,6 +99,11 @@
 					"color": "#ffffff",
 					"name": "White",
 					"slug": "white"
+				},
+				{
+					"color": "#099e65",
+					"name": "Success",
+					"slug": "success"
 				}
 			]
 		},
