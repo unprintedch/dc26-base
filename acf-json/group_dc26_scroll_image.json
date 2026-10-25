@@ -101,6 +101,29 @@
             "append": "px"
         },
         {
+            "key": "field_si_max_height_scrolled",
+            "label": "Hauteur après scroll (px)",
+            "name": "max_height_scrolled",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Hauteur des images une fois la page scrollée (le logo se redimensionne en douceur). Laisser vide pour garder la même hauteur qu'en haut de page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
+        },
+        {
             "key": "field_si_link_home",
             "label": "Lien accueil",
             "name": "link_home",
@@ -143,5 +166,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777494000
+    "modified": 1792946340
 }

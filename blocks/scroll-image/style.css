@@ -23,7 +23,7 @@
        shop/produit — sans ça un SVG sans dimensions intrinsèques s'effondre à 0×0. */
     height: var(--si-max-height, 40px) !important;
     width: auto;
-    transition: opacity 200ms ease;
+    transition: opacity 200ms ease, height 200ms ease;
 }
 
 /* État initial (en haut de page / pas encore scrollé) */
@@ -42,9 +42,25 @@
     opacity: 1;
 }
 
+/* Hauteur après scroll (champ « Hauteur après scroll ») — retombe sur la hauteur de départ si vide */
+.is-style-sticky-header.is-scrolled .dc26-scroll-image__default,
+.is-style-sticky-header.is-scrolled .dc26-scroll-image__on-scroll,
+.dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
+.dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
+    height: var(--si-max-height-scrolled, var(--si-max-height, 40px)) !important;
+}
+
 @media (max-width: 768px) {
     .dc26-scroll-image__default,
     .dc26-scroll-image__on-scroll {
         height: 50px !important;
+    }
+
+    /* Mobile plafonné à 50px, mais une hauteur après scroll plus petite est respectée */
+    .is-style-sticky-header.is-scrolled .dc26-scroll-image__default,
+    .is-style-sticky-header.is-scrolled .dc26-scroll-image__on-scroll,
+    .dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
+    .dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
+        height: min(50px, var(--si-max-height-scrolled, 50px)) !important;
     }
 }

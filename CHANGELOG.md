@@ -3,6 +3,14 @@
 Semver. A child theme declares the minimum base version it needs (`DC26_BASE_MIN`).
 Per-site pinning is done with git tags (see CLAUDE.md, rule 5).
 
+## 1.2.0 — 2026-10-25
+
+### Added
+- `dc26/scroll-image`: « Hauteur après scroll (px) » field (`max_height_scrolled`) — images resize smoothly when the page scrolls. Empty = unchanged behaviour.
+
+### Changed
+- `dc26/scroll-image`: on mobile the height is still capped at 50px, but a smaller scrolled height is now respected.
+
 ## 1.1.0 — 2026-10-22
 First tagged release. Code state of 2026-10-21 + Success color preset.
 

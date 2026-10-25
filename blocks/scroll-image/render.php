@@ -18,6 +18,7 @@ $img_default  = get_field('image_default');
 $img_scroll   = get_field('image_scroll');
 $threshold    = (int) (get_field('scroll_threshold') ?: 64);
 $max_height   = (int) (get_field('max_height') ?: 50);
+$max_height_scrolled = (int) (get_field('max_height_scrolled') ?: 0);
 $link_home    = (bool) get_field('link_home');
 
 if ($is_preview) {
@@ -32,7 +33,10 @@ if (!$img_default && !$img_scroll) {
     return;
 }
 
-$inline_style = $max_height ? ' style="--si-max-height:' . esc_attr((string) $max_height) . 'px"' : '';
+$vars = [];
+if ($max_height) $vars[] = '--si-max-height:' . $max_height . 'px';
+if ($max_height_scrolled) $vars[] = '--si-max-height-scrolled:' . $max_height_scrolled . 'px';
+$inline_style = $vars ? ' style="' . esc_attr(implode(';', $vars)) . '"' : '';
 ?>
 <div
     id="<?php echo esc_attr($block_id); ?>"
