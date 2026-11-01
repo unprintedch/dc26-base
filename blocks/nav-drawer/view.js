@@ -64,6 +64,20 @@
             });
         }
 
+        // Clic sur un lien du menu (ancre ou page) : fermer le drawer.
+        // Les boutons de sous-menu (aria-expanded / aria-haspopup) sont ignorés.
+        drawer.addEventListener('click', function (e) {
+            const link = e.target.closest('a[href]');
+            if (!link || !drawer.contains(link)) {
+                return;
+            }
+            if (link.hasAttribute('aria-haspopup') || link.hasAttribute('aria-expanded')) {
+                return;
+            }
+            closeDrawer(drawer, overlay);
+            document.dispatchEvent(new CustomEvent('dc26:nav:closed'));
+        });
+
         // Escape
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
