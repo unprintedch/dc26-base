@@ -3,6 +3,12 @@
 Semver. A child theme declares the minimum base version it needs (`DC26_BASE_MIN`).
 Per-site pinning is done with git tags (see CLAUDE.md, rule 5).
 
+## 1.2.2 — 2026-11-19
+
+### Changed
+- `templates/home.html` and `templates/archive.html`: back to the generic versions (the Benk blog layout of 1.2.1 now lives in `dc26-benk`). Sites that inherited the Benk layout from 1.2.1 must carry their own copy.
+- `dc26/nav-drawer`: no shadow while the drawer is closed; the drawer closes on link click.
+
 ## 1.2.0 — 2026-10-25
 
 ### Added
