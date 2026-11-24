@@ -8,7 +8,7 @@ Per-site pinning is done with git tags (see CLAUDE.md, rule 5).
 La base v2 est un socle minimal. Décisions : `docs/architecture-base-v2.md` (racine du projet). La v1 reste en maintenance sur la branche `v1` (dernier tag `v1.2.2`). Un site ne passe en v2 que le jour de sa migration : `deploy-base.sh` refuse un tag v2 tant que le `base-version` de l'enfant n'est pas en v2.
 
 ### Removed
-- BREAKING: blocs `dc26/toggle-panel` et `dc26/block-video-modal`.
+- BREAKING: blocs `dc26/toggle-panel` (avec ses groupes ACF) et `dc26/block-video-modal`.
 - BREAKING: tri manuel `menu_order` du Query Loop (`query-order`) et lien sur le bloc Cover (`coverLinkUrl`, `cover-block-link`).
 - BREAKING: code OAV des facettes : `dc26-facet.php`, `facet-sort-toggle.js` et le tri `sort_firm` (désormais dans `dc26-oav`).
 - BREAKING: Gravity Forms n'est plus activé automatiquement ni exigé (`Requires Plugins`).
@@ -18,6 +18,7 @@ La base v2 est un socle minimal. Décisions : `docs/architecture-base-v2.md` (ra
 - BREAKING: `templates/home.html` (identique à `index.html`) et les parts `header-light`, `header-large-title`, `footer-columns`, `footer-newsletter`.
 
 ### Changed
+- BREAKING: `theme.json` : palette réduite aux slugs que la base utilise (`primary`, `primary-hover`, `secondary`, `secondary-hover`, `black`, `white`), avec des valeurs neutres (gris). Retirés : `gray-dark`, `gray-text`, `gray-warm`, `gray-cold`, `gray-medium`, `gray-light`, `success`. Un enfant qui utilisait ces couleurs ou les valeurs de `primary`/`secondary` héritées de la v1 doit les définir dans son propre `theme.json`. Les tailles de texte, les espacements et les polices sont inchangés.
 - BREAKING: templates et parts réduits à un squelette structurel : plus de styles en ligne (marges, bordures, tailles de texte), plus de classe `is-style-sticky-header` sur le header, `single.html` sans date, catégories, image mise en avant ni étiquettes, `footer.html` réduit au © et au titre du site. Un enfant qui comptait sur la mise en page de la base doit copier les fichiers de `v1.2.2` dans son thème avant de passer en v2.
 
 ## 1.2.2 — 2026-11-19

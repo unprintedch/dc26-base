@@ -46,64 +46,34 @@
 			"gradients": [],
 			"palette": [
 				{
-					"color": "#007582",
+					"color": "#222222",
 					"name": "Primary",
 					"slug": "primary"
 				},
 				{
-					"color": "#045660",
-					"name": "Primary-hover",
+					"color": "#000000",
+					"name": "Primary hover",
 					"slug": "primary-hover"
 				},
 				{
-					"color": "#00BDD1",
+					"color": "#666666",
 					"name": "Secondary",
 					"slug": "secondary"
 				},
 				{
-					"color": "#00BDD1",
-					"name": "Secondary-hover",
+					"color": "#444444",
+					"name": "Secondary hover",
 					"slug": "secondary-hover"
 				},
 				{
-					"color": "#1c1c1c",
-					"name": "Gray dark",
-					"slug": "gray-dark"
-				},
-				{
-					"color": "#808080",
-					"name": "Gray text",
-					"slug": "gray-text"
-				},
-				{
-					"color": "#7a7267",
-					"name": "Gray warm",
-					"slug": "gray-warm"
-				},
-				{
-					"color": "#98A0B4",
-					"name": "Gray cold",
-					"slug": "gray-cold"
-				},
-				{
-					"color": "#8e8e8e",
-					"name": "Gray medium",
-					"slug": "gray-medium"
-				},
-				{
-					"color": "#f4f4f4",
-					"name": "Gray light",
-					"slug": "gray-light"
+					"color": "#000000",
+					"name": "Black",
+					"slug": "black"
 				},
 				{
 					"color": "#ffffff",
 					"name": "White",
 					"slug": "white"
-				},
-				{
-					"color": "#099e65",
-					"name": "Success",
-					"slug": "success"
 				}
 			]
 		},
