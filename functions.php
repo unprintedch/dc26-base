@@ -4,7 +4,6 @@
 add_action( 'after_setup_theme', function (): void {
     $required = [
         'advanced-custom-fields-pro/acf.php',
-        'gravityforms/gravityforms.php',
     ];
     foreach ( $required as $plugin ) {
         if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin ) && ! is_plugin_active( $plugin ) ) {
