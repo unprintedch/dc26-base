@@ -60,7 +60,7 @@ function dc26_acf_blocks(): void {
                 $script_full_path = $block_path . '/' . $script_path;
 
                 if ( file_exists( $script_full_path ) ) {
-                    $script_deps = array( 'wp-blocks', 'wp-element', 'wp-editor', 'swiper-js' );
+                    $script_deps = array( 'wp-blocks', 'wp-element', 'wp-editor' );
                     if ( preg_match( '/(^|\/)view(\.min)?\.js$/', $script_path ) ) {
                         $script_deps = array();
                     }
@@ -78,7 +78,7 @@ function dc26_acf_blocks(): void {
                 wp_register_script(
                     "dc26-block-{$block}-script",
                     $theme_uri . "/blocks/{$block}/script.js",
-                    array( 'wp-blocks', 'wp-element', 'wp-editor', 'swiper-js' ),
+                    array( 'wp-blocks', 'wp-element', 'wp-editor' ),
                     filemtime( $block_path . '/script.js' ),
                     true
                 );

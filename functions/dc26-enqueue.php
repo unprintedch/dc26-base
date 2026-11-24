@@ -25,65 +25,6 @@ function dc26_get_asset_version(string $file_path): string {
 
 
 /**
- * Vérifie si un bloc slider est présent dans le contenu
- *
- * @param WP_Post|int|null $post Post object ou ID
- * @return bool True si un bloc slider est présent
- */
-function dc26_has_slider_block($post = null): bool {
-  if (!$post) {
-    global $post;
-  }
-  
-  if (!$post) {
-    return false;
-  }
-  
-  $slider_blocks = array(
-    'dc26/slider',
-    'dc26/slider-items',
-    'dc26/slider-news',
-    'dc26/slider-video',
-    'dc26/slider-products',
-  );
-  
-  foreach ($slider_blocks as $block_name) {
-    if (has_block($block_name, $post)) {
-      return true;
-    }
-  }
-  
-  return false;
-}
-
-/**
- * Enqueue Swiper assets (CSS et JS) depuis les fichiers locaux
- *
- * @return void
- */
-function dc26_enqueue_swiper_assets(): void {
-  $swiper_css_path = get_template_directory() . '/assets/vendor/swiper/swiper-bundle.min.css';
-  $swiper_js_path = get_template_directory() . '/assets/vendor/swiper/swiper-bundle.min.js';
-  
-  // Enqueue Swiper CSS
-  wp_enqueue_style(
-    'swiper-css',
-    get_template_directory_uri() . '/assets/vendor/swiper/swiper-bundle.min.css',
-    array(),
-    file_exists($swiper_css_path) ? (string) filemtime($swiper_css_path) : '11.0.0'
-  );
-  
-  // Enqueue Swiper JS
-  wp_enqueue_script(
-    'swiper-js',
-    get_template_directory_uri() . '/assets/vendor/swiper/swiper-bundle.min.js',
-    array(),
-    file_exists($swiper_js_path) ? (string) filemtime($swiper_js_path) : '11.0.0',
-    true
-  );
-}
-
-/**
  * Enqueue des styles et scripts principaux du thème
  */
 function dc26_enqueue_styles(): void {
@@ -115,31 +56,6 @@ function dc26_enqueue_styles(): void {
   );
 }
 add_action('wp_enqueue_scripts', 'dc26_enqueue_styles');
-
-/**
- * Enqueue conditionnel des assets pour les blocs spécifiques (front-end)
- */
-function dc26_enqueue_conditional_block_assets(): void {
-  if (!dc26_has_slider_block()) {
-    return;
-  }
-  
-  dc26_enqueue_swiper_assets();
-}
-add_action('wp_enqueue_scripts', 'dc26_enqueue_conditional_block_assets', 20);
-
-/**
- * Enqueue des assets pour l'éditeur de blocs (front + editor)
- * Le hook enqueue_block_assets s'exécute à la fois sur le front-end et dans l'éditeur
- */
-function dc26_enqueue_block_editor_assets(): void {
-  if (!dc26_has_slider_block()) {
-    return;
-  }
-  
-  dc26_enqueue_swiper_assets();
-}
-add_action('enqueue_block_assets', 'dc26_enqueue_block_editor_assets');
 
 /**
  * Enqueue un script éditeur pour limiter les styles aux template parts header
