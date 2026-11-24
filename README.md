@@ -61,12 +61,8 @@ dc26-base/
 │   ├── dc26-fonts.php           # Polices Monotype/externes
 │   └── dc26-menu-walker.php     # Nav walker accordion
 ├── parts/
-│   ├── header.html
-│   ├── header-light.html        # Variante texte blanc (fonds sombres)
-│   ├── header-large-title.html
-│   ├── footer.html
-│   ├── footer-columns.html
-│   └── footer-newsletter.html
+│   ├── header.html              # Logo, navigation, bouton et tiroir mobile (blocs dc26/nav*)
+│   └── footer.html              # Squelette : © + titre du site
 ├── scripts/
 │   ├── dc26-front.js            # Entry point (importe les modules)
 │   ├── dc26-offcanvas.js        # Menu mobile burger
@@ -79,8 +75,7 @@ dc26-base/
 ├── styles/
 │   └── blocks/                  # Variations de style JSON (display, subtitle…)
 ├── templates/
-│   ├── index.html
-│   ├── home.html
+│   ├── index.html               # Squelette : liste d'articles (les enfants réécrivent la mise en page)
 │   ├── page.html
 │   ├── page-no-title.html       # Page sans wp:post-title
 │   ├── single.html

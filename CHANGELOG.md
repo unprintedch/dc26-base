@@ -15,6 +15,10 @@ La base v2 est un socle minimal. Décisions : `docs/architecture-base-v2.md` (ra
 - BREAKING: Swiper (fichiers vendor, chargement conditionnel, handle `swiper-js`, dépendance ajoutée aux scripts de blocs) → module `swiper` de `dc26-library`.
 - Tom Select (fichiers vendor) → module `tom-select` de `dc26-library`.
 - `dc26-woocommerce.php` (vide), `css/_woocommerce.css` et `css/_currency.css` (jamais chargés).
+- BREAKING: `templates/home.html` (identique à `index.html`) et les parts `header-light`, `header-large-title`, `footer-columns`, `footer-newsletter`.
+
+### Changed
+- BREAKING: templates et parts réduits à un squelette structurel : plus de styles en ligne (marges, bordures, tailles de texte), plus de classe `is-style-sticky-header` sur le header, `single.html` sans date, catégories, image mise en avant ni étiquettes, `footer.html` réduit au © et au titre du site. Un enfant qui comptait sur la mise en page de la base doit copier les fichiers de `v1.2.2` dans son thème avant de passer en v2.
 
 ## 1.2.2 — 2026-11-19
 
