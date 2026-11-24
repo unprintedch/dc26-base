@@ -3,6 +3,19 @@
 Semver. A child theme declares the minimum base version it needs (`DC26_BASE_MIN`).
 Per-site pinning is done with git tags (see CLAUDE.md, rule 5).
 
+## 2.0.0 — non publié (en cours sur main)
+
+La base v2 est un socle minimal. Décisions : `docs/architecture-base-v2.md` (racine du projet). La v1 reste en maintenance sur la branche `v1` (dernier tag `v1.2.2`). Un site ne passe en v2 que le jour de sa migration : `deploy-base.sh` refuse un tag v2 tant que le `base-version` de l'enfant n'est pas en v2.
+
+### Removed
+- BREAKING: blocs `dc26/toggle-panel` et `dc26/block-video-modal`.
+- BREAKING: tri manuel `menu_order` du Query Loop (`query-order`) et lien sur le bloc Cover (`coverLinkUrl`, `cover-block-link`).
+- BREAKING: code OAV des facettes : `dc26-facet.php`, `facet-sort-toggle.js` et le tri `sort_firm` (désormais dans `dc26-oav`).
+- BREAKING: Gravity Forms n'est plus activé automatiquement ni exigé (`Requires Plugins`).
+- BREAKING: Swiper (fichiers vendor, chargement conditionnel, handle `swiper-js`, dépendance ajoutée aux scripts de blocs) → module `swiper` de `dc26-library`.
+- Tom Select (fichiers vendor) → module `tom-select` de `dc26-library`.
+- `dc26-woocommerce.php` (vide), `css/_woocommerce.css` et `css/_currency.css` (jamais chargés).
+
 ## 1.2.2 — 2026-11-19
 
 ### Changed

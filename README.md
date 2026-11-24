@@ -33,12 +33,9 @@ npm run build:js     # JS uniquement
 dc26-base/
 ├── assets/
 │   ├── fonts/                   # Polices locales (Source Sans, Source Serif, Roboto Slab)
-│   ├── img/                     # Icônes SVG (envelope, phone, chevrons…)
-│   └── vendor/                  # Swiper, Tom Select (pré-bundlés)
+│   └── img/                     # Icônes SVG (envelope, phone, chevrons…)
 ├── blocks/
-│   ├── block-header/            # Header custom (non-ACF)
-│   ├── block-video-modal/       # Vidéo en modal
-│   └── toggle-panel/            # Accordion/toggle (ACF v3, avec view.js)
+│   └── block-header/            # Header custom (non-ACF)
 ├── build/                       # Gitignored — généré par npm run build
 ├── css/
 │   ├── style.css                # Entry PostCSS (importe les partials)
@@ -53,20 +50,16 @@ dc26-base/
 │   ├── _button-variants.css
 │   ├── _gravityform.css
 │   ├── _facet.css
-│   ├── _woocommerce.css
-│   ├── _currency.css
 │   ├── _wpml.css
 │   ├── accordion-tabs.css
 │   ├── dc-tailwind.css
 │   ├── facet-reset.css
 │   └── login.css
 ├── functions/
-│   ├── dc26-enqueue.php         # Enqueue CSS/JS, Swiper conditionnel
+│   ├── dc26-enqueue.php         # Enqueue CSS/JS
 │   ├── dc26-block-register.php  # Auto-register blocs ACF (base + child)
 │   ├── dc26-fonts.php           # Polices Monotype/externes
-│   ├── dc26-menu-walker.php     # Nav walker accordion
-│   ├── dc26-facet.php           # FacetWP — tri, normalisation dates
-│   └── dc26-woocommerce.php     # Hooks WooCommerce
+│   └── dc26-menu-walker.php     # Nav walker accordion
 ├── parts/
 │   ├── header.html
 │   ├── header-light.html        # Variante texte blanc (fonds sombres)
@@ -80,7 +73,6 @@ dc26-base/
 │   ├── accordion-tabs-radio.js  # Behavior accordion/tabs
 │   ├── accordion-tabs-variation.js  # Variation bloc éditeur
 │   ├── header-sticky.js         # Header sticky au scroll
-│   ├── facet-sort-toggle.js     # FacetWP sort → boutons toggle
 │   ├── scroll-behavior.js       # Shrink/hide header, parallax
 │   ├── dc26-animations.js       # Animations scroll
 │   └── editor-template-part-styles.js  # Limite style sticky-header aux header parts

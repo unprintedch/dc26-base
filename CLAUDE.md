@@ -20,16 +20,12 @@ npm run build     # Production build
 | `dc26-fonts.php` | Fonts Monotype/externes via filtres `dc26_monotype_font_url` et `dc26_custom_font_families` |
 | `dc26-block-register.php` | Auto-register blocs + styles de blocs |
 | `dc26-menu-walker.php` | Custom nav walker accordion |
-| `dc26-facet.php` | FacetWP — tri "Par étude", normalisation dates en année |
-| `dc26-woocommerce.php` | Placeholder WooCommerce |
 
 ## Blocks
 
 | Bloc | Description |
 |------|-------------|
 | `block-header` | Header custom |
-| `block-video-modal` | Vidéo en modal |
-| `toggle-panel` | Accordion/toggle avec `view.js` front-end |
 
 ## Scripts
 
@@ -40,7 +36,6 @@ npm run build     # Production build
 | `accordion-tabs-radio.js` | Comportement accordion/tabs front-end |
 | `accordion-tabs-variation.js` | Variation bloc éditeur (Sur place, Téléphone, En ligne) |
 | `header-sticky.js` | Header sticky au scroll (seuil 64px) |
-| `facet-sort-toggle.js` | Convertit le select FacetWP `sort_firm` en boutons toggle |
 | `editor-template-part-styles.js` | Limite le style `sticky-header` aux header template parts |
 | `scroll-behavior.js` | Scroll avancé : shrink/hide header, animations, parallax |
 
