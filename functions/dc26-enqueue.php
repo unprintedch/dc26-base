@@ -58,22 +58,6 @@ function dc26_enqueue_styles(): void {
 add_action('wp_enqueue_scripts', 'dc26_enqueue_styles');
 
 /**
- * Enqueue un script éditeur pour limiter les styles aux template parts header
- */
-function dc26_enqueue_editor_template_part_styles(): void {
-  $script_path = 'scripts/editor-template-part-styles.js';
-  
-  wp_enqueue_script(
-    'dc26-editor-template-part-styles',
-    get_template_directory_uri() . '/' . $script_path,
-    array('wp-blocks', 'wp-data', 'wp-dom-ready'),
-    dc26_get_asset_version($script_path),
-    true
-  );
-}
-add_action('enqueue_block_editor_assets', 'dc26_enqueue_editor_template_part_styles');
-
-/**
  * Enqueue block variation for accordion tabs (editor only).
  */
 function dc26_enqueue_accordion_tabs_variation(): void {
@@ -89,5 +73,5 @@ function dc26_enqueue_accordion_tabs_variation(): void {
 }
 add_action('enqueue_block_editor_assets', 'dc26_enqueue_accordion_tabs_variation');
 
-// accordion-tabs-radio.js et header-sticky.js sont bundlés dans app.js.
+// accordion-tabs-radio.js est bundlé dans app.js.
 

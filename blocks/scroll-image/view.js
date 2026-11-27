@@ -1,10 +1,7 @@
-// Fallback scroll listener quand le bloc n'est pas dans un sticky-header géré
-// par header-sticky.js. Dans le header sticky, c'est .is-scrolled sur l'ancêtre
-// qui déclenche le crossfade via CSS — aucun listener supplémentaire nécessaire.
+// Bascule .is-scrolled sur le bloc au scroll (le module header-sticky de
+// dc26-library fait suivre le crossfade au header à la place).
 
 document.querySelectorAll('.dc26-scroll-image').forEach((el) => {
-    if (el.closest('.is-style-sticky-header')) return;
-
     const threshold = parseInt(el.dataset.scrollThreshold, 10) || 64;
     let last = null;
 

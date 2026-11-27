@@ -92,14 +92,6 @@ function dc26_acf_blocks(): void {
 
 add_action( 'init', function () {
 	register_block_style(
-		'core/template-part',
-		[
-			'name'  => 'sticky-header',
-			'label' => __( 'Sticky header', 'dc26-base' ),
-		]
-	);
-
-	register_block_style(
 		'core/button',
 		[
 			'name'  => 'dc26-ghost-arrow',

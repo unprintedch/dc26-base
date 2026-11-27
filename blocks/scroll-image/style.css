@@ -1,8 +1,7 @@
 /* =========================================================
    Scroll Image — dc26-base
-   Crossfade géré en CSS pur via .is-scrolled sur l'ancêtre sticky-header
-   (voir view.js). Hors sticky-header, view.js bascule .is-scrolled sur
-   l'élément lui-même au scroll — même règle CSS s'applique.
+   Crossfade géré en CSS pur : view.js bascule .is-scrolled sur le bloc au
+   scroll. Le module header-sticky (dc26-library) ajoute le cas du header collant.
    ========================================================= */
 
 .dc26-scroll-image__wrap {
@@ -30,21 +29,17 @@
 .dc26-scroll-image__default   { opacity: 1; }
 .dc26-scroll-image__on-scroll { opacity: 0; }
 
-/* Crossfade au scroll — ancêtre sticky-header (is-scrolled sur le wrapper header) */
-.is-style-sticky-header.is-scrolled .dc26-scroll-image__default,
-/* Crossfade au scroll — bloc standalone (is-scrolled sur le bloc lui-même, cf. view.js) */
+/* Crossfade au scroll (is-scrolled sur le bloc lui-même, cf. view.js) */
 .dc26-scroll-image.is-scrolled .dc26-scroll-image__default {
     opacity: 0;
 }
 
-.is-style-sticky-header.is-scrolled .dc26-scroll-image__on-scroll,
 .dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
     opacity: 1;
 }
 
 /* Hauteur après scroll (champ « Hauteur après scroll ») — retombe sur la hauteur de départ si vide */
 .is-style-sticky-header.is-scrolled .dc26-scroll-image__default,
-.is-style-sticky-header.is-scrolled .dc26-scroll-image__on-scroll,
 .dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
 .dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
     height: var(--si-max-height-scrolled, var(--si-max-height, 40px)) !important;
@@ -58,8 +53,7 @@
 
     /* Mobile plafonné à 50px, mais une hauteur après scroll plus petite est respectée */
     .is-style-sticky-header.is-scrolled .dc26-scroll-image__default,
-    .is-style-sticky-header.is-scrolled .dc26-scroll-image__on-scroll,
-    .dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
+        .dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
     .dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
         height: min(50px, var(--si-max-height-scrolled, 50px)) !important;
     }
