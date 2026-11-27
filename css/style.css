@@ -23,7 +23,7 @@ html {
 }
 
 
-/* Décalage du contenu pour le header sticky */
+/* Transition du padding-top (utilisée par le module header-sticky) */
 body {
     padding-top: 0;
     transition: padding-top 0.3s ease;

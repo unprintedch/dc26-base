@@ -39,7 +39,6 @@
 }
 
 /* Hauteur après scroll (champ « Hauteur après scroll ») — retombe sur la hauteur de départ si vide */
-.is-style-sticky-header.is-scrolled .dc26-scroll-image__default,
 .dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
 .dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
     height: var(--si-max-height-scrolled, var(--si-max-height, 40px)) !important;
@@ -52,8 +51,7 @@
     }
 
     /* Mobile plafonné à 50px, mais une hauteur après scroll plus petite est respectée */
-    .is-style-sticky-header.is-scrolled .dc26-scroll-image__default,
-        .dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
+    .dc26-scroll-image.is-scrolled .dc26-scroll-image__default,
     .dc26-scroll-image.is-scrolled .dc26-scroll-image__on-scroll {
         height: min(50px, var(--si-max-height-scrolled, 50px)) !important;
     }
