@@ -18,6 +18,7 @@ La base v2 est un socle minimal. Décisions : `docs/architecture-base-v2.md` (ra
 - BREAKING: `templates/home.html` (identique à `index.html`) et les parts `header-light`, `header-large-title`, `footer-columns`, `footer-newsletter`.
 
 ### Changed
+- BREAKING: `theme.json` : les `styles` des éléments (`button`, `h1` à `h6`, `p`) et `fontSize`, `fontWeight`, `lineHeight` racine sont retirés. Restent la police `body` et le padding latéral racine. Un enfant qui comptait sur l'aspect de la v1 copie ces styles depuis `v1.2.2` dans son `theme.json` (ils sont aussi le point de départ de `dc26-child-starter`).
 - BREAKING: `theme.json` : palette réduite aux slugs que la base utilise (`primary`, `primary-hover`, `secondary`, `secondary-hover`, `black`, `white`), avec des valeurs neutres (gris). Retirés : `gray-dark`, `gray-text`, `gray-warm`, `gray-cold`, `gray-medium`, `gray-light`, `success`. Un enfant qui utilisait ces couleurs ou les valeurs de `primary`/`secondary` héritées de la v1 doit les définir dans son propre `theme.json`. Les tailles de texte, les espacements et les polices sont inchangés.
 - BREAKING: templates et parts réduits à un squelette structurel : plus de styles en ligne (marges, bordures, tailles de texte), plus de classe `is-style-sticky-header` sur le header, `single.html` sans date, catégories, image mise en avant ni étiquettes, `footer.html` réduit au © et au titre du site. Un enfant qui comptait sur la mise en page de la base doit copier les fichiers de `v1.2.2` dans son thème avant de passer en v2.
 
