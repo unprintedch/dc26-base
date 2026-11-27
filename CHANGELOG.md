@@ -3,7 +3,7 @@
 Semver. A child theme declares the minimum base version it needs (`DC26_BASE_MIN`).
 Per-site pinning is done with git tags (see CLAUDE.md, rule 5).
 
-## 2.0.0 — non publié (en cours sur main)
+## 2.0.0 — 2026-11-27
 
 La base v2 est un socle minimal. Décisions : `docs/architecture-base-v2.md` (racine du projet). La v1 reste en maintenance sur la branche `v1` (dernier tag `v1.2.2`). Un site ne passe en v2 que le jour de sa migration : `deploy-base.sh` refuse un tag v2 tant que le `base-version` de l'enfant n'est pas en v2.
 
@@ -16,6 +16,10 @@ La base v2 est un socle minimal. Décisions : `docs/architecture-base-v2.md` (ra
 - Tom Select (fichiers vendor) → module `tom-select` de `dc26-library`.
 - `dc26-woocommerce.php` (vide), `css/_woocommerce.css` et `css/_currency.css` (jamais chargés).
 - BREAKING: `templates/home.html` (identique à `index.html`) et les parts `header-light`, `header-large-title`, `footer-columns`, `footer-newsletter`.
+
+### Moved to dc26-library
+- BREAKING: modules `header-sticky`, `scroll-behavior`, `animations`, `accordion-tabs`, `block-styles` (boutons, listes, grille de pages, détails), `wpml`, `patterns` (17 patterns + catégories) et `button-icons`. Chaque enfant copie ceux dont il a besoin avec `add-module.sh`.
+- Retirés sans module (propres à un site, récupérables dans `v1.2.2`) : `css/_header.css`, `css/_gravityform.css`, `css/login.css`, `css/dc-tailwind.css`, `css/_facet.css`, `css/facet-reset.css` (→ module `facetwp`). Dépendances npm `swiper` et `gsap` retirées.
 
 ### Changed
 - BREAKING: header sticky retiré de la base (`css/_header-sticky.css`, `css/_header-floating.css`, `scripts/header-sticky.js`, style de bloc `sticky-header`, script éditeur) → module `header-sticky` de `dc26-library`. Le bloc `dc26/scroll-image` devient autonome (crossfade sur `.is-scrolled` du bloc) ; le module ajoute le cas du header collant.

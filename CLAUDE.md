@@ -31,20 +31,15 @@ npm run build     # Production build
 
 | Fichier | Rôle |
 |---------|------|
-| `dc26-front.js` | Entry point (importe offcanvas, facet-sort, header-sticky) |
+| `dc26-front.js` | Entry point (importe offcanvas) |
 | `dc26-offcanvas.js` | Menu mobile burger + overlay + Escape |
-| `accordion-tabs-radio.js` | Comportement accordion/tabs front-end |
-| `accordion-tabs-variation.js` | Variation bloc éditeur (Sur place, Téléphone, En ligne) |
-| `header-sticky.js` | Header sticky au scroll (seuil 64px) |
-| `editor-template-part-styles.js` | Limite le style `sticky-header` aux header template parts |
-| `scroll-behavior.js` | Scroll avancé : shrink/hide header, animations, parallax |
+
+Header sticky, animations, scroll-behavior, accordion-tabs : modules de `dc26-library`.
 
 ## Block Styles enregistrés
 
-- `sticky-header` — template-part blocks
-- `dc26-ghost-arrow` — button blocks
-- `dc26-ghost-download` — button blocks
-- `dc26-buttons-doc-list` — buttons group
+- `dc26-nav-button-primary`, `dc26-nav-button-secondary`, `dc26-nav-icon-account` — liens de navigation
+- Les autres (boutons, listes, page-list) : module `block-styles` de `dc26-library`
 
 ## Règles de compatibilité (base partagée par tous les sites)
 
@@ -57,4 +52,4 @@ npm run build     # Production build
 5. **Déploiement figé par site.** Un site ne reçoit pas la base depuis le dossier de travail mais depuis un tag git (ex. `ejma-prod`, voir `themes/dc26-ejma/deploy.sh --base`). Changer de version de base pour un site est un acte volontaire, vérifié d'abord (staging, captures).
 6. **Avant tout changement de la base** : se demander « un site existant va-t-il changer d'aspect sans l'avoir demandé ? ». Si oui → en faire une variation opt-in.
 
-Exemple : le header flottant blanc (`css/_header-floating.css`) n'est actif que si le template-part porte `is-header-floating` ; le header par défaut (transparent au top, pilule floutée au scroll) est inchangé.
+Exemple : le header flottant blanc (module `header-sticky` de `dc26-library`) n'est actif que si le template-part porte `is-header-floating`.

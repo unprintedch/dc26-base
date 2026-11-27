@@ -92,38 +92,6 @@ function dc26_acf_blocks(): void {
 
 add_action( 'init', function () {
 	register_block_style(
-		'core/button',
-		[
-			'name'  => 'dc26-ghost-arrow',
-			'label' => __( 'Sans fond + fleche', 'dc26-base' ),
-		]
-	);
-
-	register_block_style(
-		'core/button',
-		[
-			'name'  => 'dc26-ghost-download',
-			'label' => __( 'Sans fond + download', 'dc26-base' ),
-		]
-	);
-
-	register_block_style(
-		'core/button',
-		[
-			'name'  => 'dc26-outline-arrow',
-			'label' => __( 'Contour + fleche', 'dc26-base' ),
-		]
-	);
-
-	register_block_style(
-		'core/buttons',
-		[
-			'name'  => 'dc26-buttons-doc-list',
-			'label' => __( 'Liste docs alignee', 'dc26-base' ),
-		]
-	);
-
-	register_block_style(
 		'core/navigation-link',
 		[
 			'name'  => 'dc26-nav-button-primary',
@@ -147,29 +115,6 @@ add_action( 'init', function () {
 		]
 	);
 
-	register_block_style(
-		'core/page-list',
-		[
-			'name'  => 'dc26-page-grid-buttons',
-			'label' => __( 'Grille boutons', 'dc26-base' ),
-		]
-	);
-
-	register_block_style(
-		'core/list',
-		[
-			'name'  => 'check',
-			'label' => __( 'Check', 'dc26-base' ),
-		]
-	);
-
-	register_block_style(
-		'core/list',
-		[
-			'name'  => 'dc26-check-cross',
-			'label' => __( 'Croix', 'dc26-base' ),
-		]
-	);
 } );
 
 

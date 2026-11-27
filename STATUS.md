@@ -6,14 +6,14 @@
 - **SSH alias** : —
 
 ## Blocs
-- `block-header`
+- `nav`, `nav-drawer`, `nav-trigger`, `scroll-image`
 
 ## Functions
-- `dc26-block-register` — auto-enregistrement des blocs
-- `enqueue` — assets CSS/JS
-- `fonts` — chargement polices
-- `menu-walker` — walker nav custom
+- `dc26-block-register`, `dc26-enqueue`, `dc26-fonts`, `dc26-nav-render`
+
+## Version
+- **2.0.0** (2026-11-27) : socle minimal, BREAKING (voir CHANGELOG.md). v1 en maintenance sur la branche `v1`.
 
 ## Open tasks
-- [ ] Identifier les features dc26-oav à remonter ici
-- [ ] Base v2 en cours (branche main) : voir docs/architecture-base-v2.md à la racine du projet et la carte Trello P3
+- [ ] Migrer les enfants un par un (checklist type, carte Trello P5)
+- [ ] Test de l'overlay natif WP 7.0 (v2.1)

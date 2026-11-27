@@ -56,22 +56,3 @@ function dc26_enqueue_styles(): void {
   );
 }
 add_action('wp_enqueue_scripts', 'dc26_enqueue_styles');
-
-/**
- * Enqueue block variation for accordion tabs (editor only).
- */
-function dc26_enqueue_accordion_tabs_variation(): void {
-  $script_path = 'scripts/accordion-tabs-variation.js';
-
-  wp_enqueue_script(
-    'dc26-accordion-tabs-variation',
-    get_template_directory_uri() . '/' . $script_path,
-    array('wp-blocks', 'wp-dom-ready', 'wp-i18n'),
-    dc26_get_asset_version($script_path),
-    true
-  );
-}
-add_action('enqueue_block_editor_assets', 'dc26_enqueue_accordion_tabs_variation');
-
-// accordion-tabs-radio.js est bundlé dans app.js.
-
